@@ -20,6 +20,7 @@ body.my-login-page {
 .brand {
 	width: 80%;
 	height: 10%;
+	margin: 10% auto;
 	box-shadow: 0 4px 8px rgba(0,0,0,.05);
 	position: relative;
 }
@@ -43,6 +44,8 @@ body.my-login-page {
 
 .my-login-page .card .card-title {
 	margin-bottom: 30px;
+	font-family: sans-serif;
+	font-weight: bold;
 }
 
 .my-login-page .form-control {
@@ -51,15 +54,21 @@ body.my-login-page {
 
 .my-login-page .form-group label {
 	width: 100%;
+	font-size: 15px;
 }
 
 .my-login-page .btn.btn-block {
 	padding: 12px 10px;
+	background-color: #5FC9DA;
+	font-size: 20px;
+	font-weight: bold;
+	color: #000000;
+	border: none;
 }
 
 .my-login-page .footer {
 	margin: 40px 0;
-	color: #888;
+	color: #ACE6F2;
 	text-align: center;
 }
 
