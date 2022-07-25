@@ -1,0 +1,43 @@
+/* This page is consistent throughout all pages */
+
+/* Navigation Bar */
+.navbar {
+    background-color: #5B7485;
+    color: white;
+}
+
+.nav-item {
+    color: white;
+    font-size: 20px;
+}
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: pink;
+    background-color: transparent;
+    text-decoration: underline;
+}
+  
+a:active {
+    color: pink;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    background-color: #5B7485;
+    color: white;
+    text-align: center;
+}
