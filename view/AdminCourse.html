@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Quiz</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../css/course.css">
+  <link rel="stylesheet" type="text/css" href="../css/consistent.css">
+</head>
+
+<body class="my-login-page">
+
+    <body>
+
+        <div class="content-Header">
+          <h1>SOC Management System</h1>
+          <p>With SP, it's So Possible!</p> 
+        </div>
+        
+        <nav class="navbar navbar-expand-sm">
+          <div class="container-fluid">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="/view/Index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/view/Module.html">Modules</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/view/Course.html">Courses</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/view/Gpa-calculator.html">Target Setting</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/view/Quiz.html">DIT Specialization Quiz</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+    <div class="container-fluid">
+
+            <!-- Page Content -->
+            <div id="page-content" class="col-10 py-3">
+                <div id="content-view-admin" class="container">
+
+                    <!-- Content Header -->
+                    <div id="content-header-admin">
+                        <p>Manage Course</p>
+
+                        <div class="form-group row justify-content-end mt-4 pb-3 pe-3">
+                            <label for="select-status" class="col-2 col-form-label align-middle" style="font-weight: bold;">Select Section:</label>
+                            <div class="col-4">
+                                <select class="form-select-sm col-6" id="select-status">
+                                    <option value="active" selected>Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+
+                            <div class="col-6">
+                                <button type="button" class="btn float-end create-course-button"
+                                    data-bs-toggle="modal" data-bs-target="#create-course">+ Create Course</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+
+                    <!-- Content Item -->
+                    <div id="content-item-admin">
+                        <table id="admin-table" class="table">
+                            <thead>
+                                <tr class="align-middle">
+                                    <th scope="col" class="col-3" >Course Code</th>
+                                    <th scope="col" class="col-7" >Course Name</th>
+                                    <th scope="col" class="col-1" >Action</th>
+                                    <th scope="col" class="col-1" ></th>
+                                </tr>
+                            </thead>
+                            <tbody class="course-list">
+
+                            </tbody>
+                            
+                        </table>
+
+                        <!-- Create Course Modal -->
+                        <div class="modal fade" id="create-course" tabindex="-1" aria-labelledby="create-course"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <!-- Content header -->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="create-course-title">Create New Course</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- Content -->
+                                    <div class="modal-body create-course-content">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- View Course Modal -->
+                        <div class="modal fade" id="view-course" tabindex="-1" aria-labelledby="view-course"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <!-- Content header -->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="view-course-title"></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- Content -->
+                                    <div class="modal-body view-course-content">
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delete Course Modal -->
+                        <div class="modal fade" id="delete-course" tabindex="-1" aria-labelledby="delete-course"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header justify-content-center">
+                                        <h5 class="modal-title confirm-delete-title">Confirm Deactivation</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h5 class="course-name-delete text-center"></h5>
+                                    </div>
+                                    <div class="modal-footer justify-content-center confirm-delete-button">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="delete-course-forever" tabindex="-1"
+                            aria-labelledby="delete-course-forever" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header justify-content-center">
+                                        <h5 class="modal-title confirm-delete-title">Confirm Delete Forever</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h5 class="course-name-delete text-center"></h5>
+                                    </div>
+                                    <div class="modal-footer justify-content-center confirm-delete-button">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Success Modal -->
+                        <div class="modal fade" id="submit-requests-success-created" tabindex="-1"
+                            aria-labelledby="submit-requests-success-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header justify-content-center">
+                                        <h5 class="modal-title">Course Created</h5>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-primary "
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="submit-requests-success-updated" tabindex="-1"
+                            aria-labelledby="submit-requests-success-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header justify-content-center">
+                                        <h5 class="modal-title">Course Updated</h5>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-primary "
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="submit-requests-success-disabled" tabindex="-1"
+                            aria-labelledby="submit-requests-success-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header justify-content-center">
+                                        <h5 class="modal-title">Course Deactivated</h5>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-primary "
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="submit-requests-success-enabled" tabindex="-1"
+                        aria-labelledby="submit-requests-success-modal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header justify-content-center">
+                                    <h5 class="modal-title">Course is now active</h5>
+                                </div>
+                                <div class="modal-footer justify-content-center">
+                                    <button type="button" class="btn btn-primary "
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="modal fade" id="submit-requests-success-deleted" tabindex="-1"
+                        aria-labelledby="submit-requests-success-modal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header justify-content-center">
+                                    <h5 class="modal-title">Course Deleted</h5>
+                                </div>
+                                <div class="modal-footer justify-content-center">
+                                    <button type="button" class="btn btn-primary "
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <!-- Error Modal -->
+                        <div class="modal fade" id="submit-requests-error" tabindex="-1"
+                            aria-labelledby="submit-requests-error-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header justify-content-center">
+                                        <h5 class="modal-title">An Error has occured</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="error-message text-center"></p>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-primary "
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        
+        <div class="footer">
+          <h3>Singapore Polytechnic</h3>
+          <p>500 Dover Road Singapore 139651</p>
+        </div>
+        
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="js/course.js"></script>
+</body>
+
+</html>
