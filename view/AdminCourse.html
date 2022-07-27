@@ -11,13 +11,13 @@
 
 <body class="my-login-page">
 
-    <body>
-
+        <!-- Content Header -->
         <div class="content-Header">
           <h1>SOC Management System</h1>
           <p>With SP, it's So Possible!</p> 
         </div>
         
+        <!-- Navigation Bar -->
         <nav class="navbar navbar-expand-sm">
           <div class="container-fluid">
             <ul class="navbar-nav">
@@ -40,47 +40,31 @@
           </div>
         </nav>
 
-    <div class="container-fluid">
-
             <!-- Page Content -->
-            <div id="page-content" class="col-10 py-3">
-                <div id="content-view-admin" class="container">
-
-                    <!-- Content Header -->
-                    <div id="content-header-admin">
-                        <p>Manage Course</p>
+            <div id="page-content" class="col-10 py-3"></div>
+                <p>Manage Course</p>
 
                         <div class="form-group row justify-content-end mt-4 pb-3 pe-3">
-                            <label for="select-status" class="col-2 col-form-label align-middle" style="font-weight: bold;">Select Section:</label>
-                            <div class="col-4">
-                                <select class="form-select-sm col-6" id="select-status">
-                                    <option value="active" selected>Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                            </div>
-
+                            <!-- Create course button -->
                             <div class="col-6">
                                 <button type="button" class="btn float-end create-course-button"
                                     data-bs-toggle="modal" data-bs-target="#create-course">+ Create Course</button>
                             </div>
-
                         </div>
-
                     </div>
                     
-
-                    <!-- Content Item -->
+                    <!-- Course Table -->
                     <div id="content-item-admin">
-                        <table id="admin-table" class="table">
+                        <table id="course-table" class="table">
                             <thead>
                                 <tr class="align-middle">
-                                    <th scope="col" class="col-3" >Course Code</th>
+                                    <th scope="col" class="col-2" >Course Code</th>
                                     <th scope="col" class="col-7" >Course Name</th>
-                                    <th scope="col" class="col-1" >Action</th>
-                                    <th scope="col" class="col-1" ></th>
+                                    <th scope="col" class="col-3" >Course Abbrv.</th>
+                                    <th scope="col" class="col-1 delete-course" >Delete</th>
                                 </tr>
                             </thead>
-                            <tbody class="course-list">
+                            <tbody class="course-content">
 
                             </tbody>
                             
@@ -107,36 +91,13 @@
                             </div>
                         </div>
 
-                        <!-- View Course Modal -->
-                        <div class="modal fade" id="view-course" tabindex="-1" aria-labelledby="view-course"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <!-- Content header -->
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="view-course-title"></h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-
-                                    <!-- Content -->
-                                    <div class="modal-body view-course-content">
-
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Delete Course Modal -->
                         <div class="modal fade" id="delete-course" tabindex="-1" aria-labelledby="delete-course"
                             aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header justify-content-center">
-                                        <h5 class="modal-title confirm-delete-title">Confirm Deactivation</h5>
+                                        <h5 class="modal-title confirm-delete-title">Confirm Delete</h5>
                                     </div>
                                     <div class="modal-body">
                                         <h5 class="course-name-delete text-center"></h5>
@@ -254,10 +215,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
 
-        
+        <!-- Footer -->
         <div class="footer">
           <h3>Singapore Polytechnic</h3>
           <p>500 Dover Road Singapore 139651</p>
