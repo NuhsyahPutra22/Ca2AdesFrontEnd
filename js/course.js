@@ -3,31 +3,6 @@ const STORAGE_API_HOST = isLocalhost ? `http://localhost:3000` : `https://keyval
 
 
 
-
-
-
-// fetch (`http://localhost:3000/Course`,{
-//     method:'GET',
-//     headers: {
-//      'Content-Type': 'application/json',
-//     },
-// }).then((response)=>{
-// response.text()
-// console.log(response)
-// return response.data
-// })
-// .then((data)=>{
-//  const html= `  <th scope="col" class="col-2" >${data.coursecode}</th>
-//     <th scope="col" class="col-7" >${data.coursename}</th>
-//     <th scope="col" class="col-3" >${data.courseabbrev}</th>
-// `
-// document.getElementById("courselist").innerHTML=html
-
-// })
-// .catch((error) => alert(error.message))
-
-
-
 axios.get(`http://localhost:3000/Course`)      
               .then((res) => {
                 if (res.status === 200) {
