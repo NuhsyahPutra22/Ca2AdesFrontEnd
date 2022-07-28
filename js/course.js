@@ -1,11 +1,15 @@
 const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const STORAGE_API_HOST = isLocalhost ? `http://localhost:3000` : `https://keyval-store.herokuapp.com`;
 
-axios.get(`http://localhost:3000/Module`)      
+
+
+axios.get(`http://localhost:3000/Course`)      
               .then((res) => {
                 if (res.status === 200) {
                     console.log("Success!");
+                    
                     console.log(res)
+                    // window.location.href = "../view/Module.html";
                     return res.data
                 } else {
                   res.json().then((error) => { throw error });
@@ -15,17 +19,18 @@ axios.get(`http://localhost:3000/Module`)
               .then((data)=>{
                 var tbody=`<table>`
                 for (let i = 0; i < data.result.length; i++) {
+                  console.log(data.result[0].coursecode)
                   tbody+=`<tbody>`
 
-  tbody+=`  <th scope="col" class="col-2" >${data.result[i].modulecode}</th>`
-  tbody+=`<th scope="col" class="col-7" >${data.result[i].modulename}</th>`
-  tbody+= `<th scope="col" class="col-3" >${data.result[i].moduledetail}</th>
+  tbody+=`  <th scope="col" class="col-2" >${data.result[i].coursecode}</th>`
+  tbody+=`<th scope="col" class="col-7" >${data.result[i].coursename}</th>`
+  tbody+= `<th scope="col" class="col-3" >${data.result[i].courseabbrev}</th>
 `
 }
 tbody+=`</table>`
 
 
-document.getElementById("modulelist").innerHTML=tbody
+document.getElementById("courselist").innerHTML=tbody
 
            
               })

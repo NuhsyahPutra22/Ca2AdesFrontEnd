@@ -39,7 +39,7 @@ axios.post(`http://localhost:3000/login`,requestBody)
                 if (res.status === 200) {
                     console.log("Success!");
                     console.log(res)
-                    window.location.href = "../view/Module.html";
+                    window.location.href = "../view/admincourse.html";
                     return res.data
                 } else {
                   res.json().then((error) => { throw error });
@@ -49,7 +49,8 @@ axios.post(`http://localhost:3000/login`,requestBody)
               .then((data)=>{
                 sessionStorage.setItem("token",data.token)
                 sessionStorage.setItem("username",data.username)
-                sessionStorage.setItem("userpassword",data.userrole)
+                sessionStorage.setItem("userrole",data.userrole)
+                sessionStorage.setItem("userid",data.userid)
               })
               .catch((error) => alert(error.message))
            
