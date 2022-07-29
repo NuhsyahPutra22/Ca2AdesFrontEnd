@@ -41,10 +41,18 @@
           </div>
         </nav>
 
+      <!-- Feedback form -->
     <form class="feedback" method="POST" id="submitfeedback">
-      <b>feedback</b><br>
-      <textarea class="feedbacktext" id="textfeedback"></textarea><BR>
-      <button >SUBMIT</button>
+      <p>Feedback</p>
+      <div class="col-10">
+      <label>Title</label>
+      <input type="text" class="form-control" id="feedback-title" aria-describedby="feedback-title" placeholder="Please enter a title">
+      </div>
+      <div class="col-10">
+      <label>Remarks</label>
+      <textarea class="feedbacktext" id="textfeedback"></textarea>
+    </div>
+      <button >Submit</button>
     </form>
 
     <div class="getfeedback">
