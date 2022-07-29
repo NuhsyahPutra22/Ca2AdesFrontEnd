@@ -4,13 +4,13 @@ const STORAGE_API_HOST = isLocalhost ? `http://localhost:3000` : `https://keyval
 const token = sessionStorage.getItem("token");
 const userid=sessionStorage.getItem("userid");
 const userrole=sessionStorage.getItem("userrole");
-if (token === null || isNaN(userid)||userrole!=="Admin") {
-    console.log("Redirecting to login...");
-    if(userrole!=="Admin"){
-        alert("you are no admin")
-    }
-    window.location.href = "../view/login.html";
-}
+// if (token === null || isNaN(userid)||userrole!=="Admin") {
+//     console.log("Redirecting to login...");
+//     if(userrole!=="Admin"){
+//         alert("you are no admin")
+//     }
+//     window.location.href = "../view/login.html";
+// }
 
 axios.get(`http://localhost:3000/Course`)      
               .then((res) => {

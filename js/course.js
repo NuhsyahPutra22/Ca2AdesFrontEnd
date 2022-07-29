@@ -7,9 +7,7 @@ axios.get(`http://localhost:3000/Course`)
               .then((res) => {
                 if (res.status === 200) {
                     console.log("Success!");
-                    
                     console.log(res)
-                    // window.location.href = "../view/Module.html";
                     return res.data
                 } else {
                   res.json().then((error) => { throw error });
