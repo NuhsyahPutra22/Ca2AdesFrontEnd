@@ -26,8 +26,8 @@ window.addEventListener("DOMContentLoaded", function () {
                     <div class="card" style="margin-top: 2rem;">
                     <div class="card-body">
          
+                        <p class="card-text">${data.result[i].feedbacktitle}</p>
                         <p class="card-text">${data.result[i].feedbackcontent}</p>
-                        <p class="card-text"></p>
                     </div>
                     <div class="card-footer text-muted">
                         Date : ${res}
@@ -48,9 +48,11 @@ document.getElementById("getfeedback").innerHTML=postHtml
     var feedbacksubmit = document.getElementById("submitfeedback");
     feedbacksubmit.addEventListener("submit", function(event) {
         event.preventDefault();
+        let feedbacktitle=document.getElementById("feedback-title").value;
         let feedbackcontent=document.getElementById("textfeedback").value;
         let userid=sessionStorage.getItem("userid")
         const data={
+            feedbacktitle:feedbacktitle,
              feedbackcontent:feedbackcontent,
              userid:userid
         }
