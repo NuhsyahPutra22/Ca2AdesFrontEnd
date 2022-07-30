@@ -1,7 +1,14 @@
 const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const STORAGE_API_HOST = isLocalhost ? `http://localhost:3000` : `https://keyval-store.herokuapp.com`;
 
-
+const token = sessionStorage.getItem("token");
+const userid=sessionStorage.getItem("userid");
+const userrole=sessionStorage.getItem("userrole");
+if (token === null || isNaN(userid)) {
+    console.log("Redirecting to login...");
+  
+    window.location.href = "../view/login.html";
+}
 
 window.addEventListener("DOMContentLoaded", function () {
 
@@ -17,29 +24,48 @@ window.addEventListener("DOMContentLoaded", function () {
               })
 
               .then((data)=>{
+                var id=sessionStorage.getItem("userid")
                 var postHtml=``
                 for (let i = 0; i < data.result.length; i++) {
                     var str = data.result[i].feedbackdate;
                     var res = str.substring(0, 10);
+                        if (data.result[i].userid==id){
 
-                 postHtml += `
-                    <div class="card" style="margin-top: 2rem;">
-                    <div class="card-body">
-         
-                        <p class="card-text">${data.result[i].feedbacktitle}</p>
-                        <p class="card-text">${data.result[i].feedbackcontent}</p>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Date : ${res}
-                    </div>
-                </div>
-                `;
+                            postHtml += `
+                               <div class="card" style="margin-top: 2rem;">
+                               <div class="card-body">
+                    
+                                   <p class="card-text">${data.result[i].feedbacktitle}</p>
+                                   <p class="card-text">${data.result[i].feedbackcontent}</p>
+                               </div>
+                               <div class="card-footer text-muted">
+                                   Date : ${res}
+                                   <button onclick="deletebtn(${data.result[i].feedbackid})">delete</button>
+                               </div>
+                           </div>
+                           `;
+                           document.getElementById("getfeedback").innerHTML=postHtml
+                        }
+                        else{
+                            postHtml += `
+                            <div class="card" style="margin-top: 2rem;">
+                            <div class="card-body">
+                 
+                                <p class="card-text">${data.result[i].feedbacktitle}</p>
+                                <p class="card-text">${data.result[i].feedbackcontent}</p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Date : ${res}
+                            </div>
+                        </div>
+                        `;
+                        document.getElementById("getfeedback").innerHTML=postHtml
+                        }
                                 
                 }
 
 
 
-document.getElementById("getfeedback").innerHTML=postHtml
 
            
               })
@@ -78,4 +104,36 @@ axios({
        
         })
 
+
+        
+        
+        
     })
+    
+    
+    
+    
+    
+            function deletebtn(feedbackid){
+                // console.log(courseid);
+                let userid=sessionStorage.getItem("userid")
+                axios.delete("http://localhost:3000/Feedback/"+userid+"/"+feedbackid, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(function (response) {
+                    if (response.status === 200) {
+                        alert('Delete successfull!');
+                        location.reload();
+                    } else {
+                        alert('Failed to delete!')
+                        console.log(response);
+                    }
+                })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            }
+
+
