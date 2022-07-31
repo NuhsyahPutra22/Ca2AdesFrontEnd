@@ -68,6 +68,50 @@ document.getElementById("courselist").innerHTML=tbody
             }
 
 
+function createcourse(){
+
+let a=document.getElementById("course-code").value;
+let b=document.getElementById("course-name").value;
+let c=document.getElementById("course-abbrv").value;
+const data={
+  coursecode:a,
+   coursename:b,
+   courseabbrev:c
+}
+axios({
+  method: 'post',
+  url: 'http://localhost:3000/Course',
+  data: data,
+  headers: { 'Content-Type': 'application/json' }
+})      
+        .then((res) => {
+          if (res.status === 201) {
+              console.log("Success!");
+              alert("success");
+              location.reload();
+              
+          } else {
+          alert("error");
+          }
+        })
+
+       
+        .catch((error) => alert(error.message))
+     
+      
+
+
+
+
+
+
+}
+
+
+
+
+
+            
 
 
 
