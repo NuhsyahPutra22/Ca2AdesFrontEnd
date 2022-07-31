@@ -34,7 +34,8 @@ axios.get(`http://localhost:3000/Course`)
   tbody+=`  <th scope="col" class="col-2" >${data.result[i].coursecode}</th>`
   tbody+=`<th scope="col" class="col-7" >${data.result[i].coursename}</th>`
   tbody+= `<th scope="col" class="col-3" >${data.result[i].courseabbrev}</th>`
-  tbody+=`<th scope="col" class="col-3" > <button onclick="deletebtn(${data.result[i].courseid})"> delete</button></th>`
+  tbody+=`<th scope="col" class="col-3" > <button onclick="editbtn(${data.result[i].courseid})"> EDIT</button></th>`
+  tbody+=`<th scope="col" class="col-3" > <button onclick="deletebtn(${data.result[i].courseid})"> DELETE</button></th>`
 }
 tbody+=`</table>`
 
@@ -97,12 +98,12 @@ axios({
 
        
         .catch((error) => alert(error.message))
-     
-      
+}
 
 
-
-
+function editbtn(courseid){
+let a=data.result[i].coursecode
+document.getElementById("course-code2").value=a
 
 
 }
