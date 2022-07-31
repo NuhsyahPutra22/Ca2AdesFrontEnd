@@ -36,8 +36,5 @@ const posthtml=`     <nav class="navbar navbar-expand-sm">
 </nav>`
 document.getElementById("navbar").innerHTML=posthtml
 }
-
-
-
-
 }
+
