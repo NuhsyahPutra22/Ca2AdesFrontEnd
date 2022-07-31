@@ -1,4 +1,6 @@
 var a=sessionStorage.getItem("userrole")
+var b=sessionStorage.getItem("userid")
+// var courseid;
 
 if (a=="Admin"){
     const  html=`
@@ -37,4 +39,86 @@ const posthtml=`     <nav class="navbar navbar-expand-sm">
 document.getElementById("navbar").innerHTML=posthtml
 }
 }
+
+
+
+
+
+
+
+axios.get(`http://localhost:3000/user/`+b)      
+.then((res) => {
+  if (res.status === 200) {
+      console.log("Success!");
+      console.log(res)
+      return res.data
+  } else {
+  this.alert("error")
+  }
+})
+
+.then((data)=>{
+
+
+  for (let i = 0; i < data.result.length; i++) {
+const     courseid=data.result[i].courseid;
+sessionStorage.setItem("courseid",courseid)
+      const posthtml=`
+      <h5>${data.result[i].coursecode} ${data.result[i].coursename}</h5>
+      
+      `
+       
+        
+          document.getElementById("course").innerHTML=posthtml
+          }
+                  
+  }
+
+
+
+
+
+)
+.catch((error) => alert(error.message))
+const courseid=sessionStorage.getItem("courseid")
+axios.get(`http://localhost:3000/Modulecourse/`+courseid)      
+.then((res) => {
+  if (res.status === 200) {
+      console.log("Success!");
+      console.log(res)
+      return res.data
+  } else {
+  this.alert("error")
+  }
+})
+
+.then((data)=>{
+
+
+  for (let i = 0; i < data.result.length; i++) {
+      const posthtml=`
+      <h5>${data.result[i].modulecode} ${data.result[i].modulename}</h5>
+      
+      `
+       
+        
+          document.getElementById("module").innerHTML=posthtml
+          }
+                  
+  }
+
+
+
+
+
+)
+.catch((error) => alert(error.message))
+
+
+
+
+
+
+
+
 
