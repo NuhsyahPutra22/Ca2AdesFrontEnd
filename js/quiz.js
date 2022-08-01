@@ -10,12 +10,13 @@ function submit() {
   var q7 = document.quiz.q7.value;
   var result = document.getElementById("result");
   var quiz = document.getElementById("quiz");
+  var quiz = document.getElementById("button");
 
   // if else conditions here
   // Question 1
   if (q1 == "yes") {
     points += 2;
-  } else if (q1 == "ok") {
+  } else if (q1 == "neutral") {
     points++;
   } else {
     points = points;
@@ -60,7 +61,7 @@ function submit() {
     //Question 6
     if (q6 == "kinesthetic") {
       points += 2;
-    } else if (q6 == "auditory") {
+    } else if (q6 == "Auditory") {
       points++;
     } else {
       points = points;
@@ -76,14 +77,18 @@ function submit() {
     }
 
     quiz.style.display = "none";
+    button.style.display = "none";
 
     // points results
     if (points > 10) {
-      result.textContext = `Your result s ${result}/20. Software Development`;
-    } else if (points > 5) {
-      result.textContext = `Your result s ${result}/20. Immersive Simulation`;
+      // result.textContext = `Your result s ${result}/20. Software Development`;
+      result.innerHTML = `Your result is ${points}/14. Software Development`;
+    } else if (points > 6) {
+      // result.textContext = `Your result s ${result}/20. Immersive Simulation`;
+      result.innerHTML = `Your result is ${points}/14. Immersive Simulation`;
     } else {
-      result.textContext = `Your result s ${result}/20. User Experience`;
+      // result.textContext = `Your result s ${result}/20. User Experience`;
+      result.innerHTML = `Your result is ${points}/14. User Experience`;
     }
   
 }
