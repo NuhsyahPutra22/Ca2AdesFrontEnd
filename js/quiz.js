@@ -92,3 +92,7 @@ function submit() {
     }
   
 }
+
+function refresh() {
+  location.reload();
+}
