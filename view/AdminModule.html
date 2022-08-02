@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/module.css">
   <link rel="stylesheet" type="text/css" href="../css/consistent.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../js/adminmodule.js"></script>
 </head>
 
 <body class="module-page">
@@ -51,28 +52,28 @@
           <div class="create-module-form row">
               <div class="form-group">
                   <label for="module-code">Module Code:</label>
-                  <input type="text" class="form-control" id="module-code" aria-describedby="module-code" placeholder="Module Code">
+                  <input type="text" class="form-control" id="Amodule-code" aria-describedby="module-code" placeholder="Module Code">
               </div>
               <div class="form-group">
                   <label for="module-name">Module Name:</label>
-                  <input type="text" class="form-control" id="module-name" aria-describedby="module-name" placeholder="Module Name">
+                  <input type="text" class="form-control" id="Amodule-name" aria-describedby="module-name" placeholder="Module Name">
               </div>
               <div class="form-group">
                   <label for="module-details">Module Details:</label>
-                  <input type="text" class="form-control" id="module-details" placeholder="Module Details">
+                  <input type="text" class="form-control" id="Amodule-details" placeholder="Module Details">
               </div>  
               <div class="form-group">
-                <label for="courseid">Courseid:</label>
-                <input type="text" class="form-control" id="courseid" placeholder="courseid">
+                <label for="courseid">Courseid:  </label>
+                <select class="form-control" id="Acourseid"></select>
               </div>
+              <br>
               <div class="form-group">
                 <label for="semestername">SemesterName:</label>
-                <input type="text" class="form-control" id="semestername" placeholder="semestername">
+                <input type="text" class="form-control" id="Asemestername" placeholder="semestername">
               </div>
           </div>
           <div class="form-group">
-              <button type="button" class="btn float-end create-module-button"
-                  data-bs-target="#create-module">+ Create Module</button>
+            <button id="insert-btn" type="submit" onclick="AddModule()" class="btn btn-success">
           </div>
       </div>
   
@@ -82,20 +83,19 @@
           <div class="update-module-form row">
               <div class="form-group">
                   <label for="module-code">Module Code:</label>
-                  <input type="text" class="form-control" id="module-code" aria-describedby="module-code" placeholder="Module Code">
+                  <input type="text" class="form-control" id="Umodule-code" aria-describedby="module-code" placeholder="Module Code">
               </div>
               <div class="form-group">
                   <label for="module-name">Module Name:</label>
-                  <input type="text" class="form-control" id="module-name" aria-describedby="module-name" placeholder="Module Name">
+                  <input type="text" class="form-control" id="Umodule-name" aria-describedby="module-name" placeholder="Module Name">
               </div>
               <div class="form-group">
                   <label for="module-details">Module Details:</label>
-                  <input type="text" class="form-control" id="module-details" placeholder="Module Details">
+                  <input type="text" class="form-control" id="Umodule-details" placeholder="Module Details">
               </div>  
           </div>
           <div class="form-group">
-              <button type="button" class="btn float-end update-module-button"
-                  data-bs-target="#update-module">Update Module</button>
+            <button id="edit-btn" type="submit" class="btn btn-info" onclick="updateButtonPress()">
           </div>
       </div>
 
@@ -104,9 +104,11 @@
           <table id="module-table" class="table">
             <thead>
               <tr class="align-middle">
-                <th scope="col" class="col-2" >Module Code</th>
-                <th scope="col" class="col-7" >Module Name</th>
+                <th scope="col" class="col-1" >Module Code</th>
+                <th scope="col" class="col-2" >Module Name</th>
                 <th scope="col" class="col-3" >Module Details</th>
+                <th scope="col" class="col-4" >Course Name</th>
+                <th scope="col" class="col-5" >SemesterName</th>
               </tr>
             </thead>
             <tbody class="module-content" id="courselist">
