@@ -41,3 +41,30 @@ a:active {
     color: white;
     text-align: center;
 }
+
+/* Content Header */
+.content-Header {
+    text-align: center;
+}
+
+.content-Header h1 {
+    color: #EF3340;
+    font-weight: bold;
+}
+
+/* Table */
+table {
+    border-radius: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+table th {
+    background-color: #89cff0;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+table tbody {
+    font-size: 12px;
+}
