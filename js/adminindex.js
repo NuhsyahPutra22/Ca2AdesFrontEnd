@@ -33,4 +33,23 @@ document.getElementById("courselist").innerHTML=tbody
 
 
 
+function deleteuser(userid){
 
+  axios.delete("http://localhost:3000/user/"+userid, {
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+  .then(function (response) {
+      if (response.status === 200) {
+          alert('Delete successfull!');
+          location.reload();
+      } else {
+          alert('Failed to delete!')
+          console.log(response);
+      }
+  })
+      .catch((error) => {
+          console.log(error);
+      })
+}
