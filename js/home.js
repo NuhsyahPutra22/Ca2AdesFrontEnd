@@ -1,44 +1,37 @@
-var a=sessionStorage.getItem("userrole")
+var admin=sessionStorage.getItem("userrole")
 var b=sessionStorage.getItem("userid")
 // var courseid;
 
-// if (a=="Admin"){
-//     const  html=`
-//     <select  id="modes">
-//     <option value="Admin">Admin mode</option>
-//     <option value="Student">Student Mode</option>
+if (admin=="Admin"){
+    const  html=`
+    <select  id="modes">
+    <option value="Admin">Admin mode</option>
+    <option value="Student">Student Mode</option>
     
-//   </select>`
+  </select>
+  <button type="submit" onclick="gopage()">go</button>
+  `
 
 
-// document.getElementById("changemode").innerHTML=html;
+document.getElementById("changemode").innerHTML=html;
+
+function gopage(){
+
+    if(document.getElementById("modes").value=="Admin"){
+    
+       window.location.href="../view/AdminIndex.html"
+    
+    }
 
 
-// if (document.getElementById("modes").value=="Admin"){
-// const posthtml=`     <nav class="navbar navbar-expand-sm">
-// <div class="container-fluid">
-//   <ul class="navbar-nav">
-//     <li class="nav-item">
-//       <a class="nav-link" href="/view/AdminIndex.html">Home</a>
-//     </li>
-//     <li class="nav-item">
-//       <a class="nav-link" href="/view/AdminModule.html">Modules</a>
-//     </li>
-//     <li class="nav-item">
-//       <a class="nav-link active" href="/view/AminCourse.html">Courses</a>
-//     </li>
-//     <li class="nav-item">
-//       <a class="nav-link" href="/view/Gpa-calculator.html">Target Setting</a>
-//     </li>
-//     <li class="nav-item">
-//       <a class="nav-link" href="/view/AdminFeedback.html">Feedback From Student</a>
-//     </li>
-//   </ul>
-// </div>
-// </nav>`
-// document.getElementById("navbar").innerHTML=posthtml
-// }
-// }
+
+
+}    
+}
+
+
+
+
 
 
 

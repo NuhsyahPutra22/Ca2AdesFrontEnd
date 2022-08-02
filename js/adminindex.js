@@ -1,3 +1,51 @@
+var admin=sessionStorage.getItem("userrole")
+
+// var courseid;
+
+if (admin=="Admin"){
+    const  html=`
+    <select  id="modes">
+    <option value="Admin">Admin mode</option>
+    <option value="Student">Student Mode</option>
+    
+  </select>
+  <button type="submit" onclick="gopage()">go</button>
+  `
+
+
+document.getElementById("changemode").innerHTML=html;
+
+function gopage(){
+
+    if(document.getElementById("modes").value=="Student"){
+    
+       window.location.href="../view/index.html"
+    
+    }
+
+
+
+
+}    
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 axios.get(`http://localhost:3000/user`)      
 .then((res) => {
