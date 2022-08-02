@@ -4,11 +4,11 @@ const STORAGE_API_HOST = isLocalhost ? `http://localhost:3000` : `https://adessc
 const token = sessionStorage.getItem("token");
 const userid=sessionStorage.getItem("userid");
 const userrole=sessionStorage.getItem("userrole");
-if (token === null || isNaN(userid)) {
-    console.log("Redirecting to login...");
+// if (token === null || isNaN(userid)) {
+//     console.log("Redirecting to login...");
   
-    window.location.href = "../view/login.html";
-}
+//     window.location.href = "../view/login.html";
+// }
 
 window.addEventListener("DOMContentLoaded", function () {
 

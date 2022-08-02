@@ -67,9 +67,19 @@ sessionStorage.setItem("courseid",courseid)
       <h5>${data.result[i].coursecode} ${data.result[i].coursename}</h5>
       
       `
+      const html=`
+      <div>
+              <h2>About Me</h2>
+              <p>USERID: ${data.result[i].username}</p>
+              <p>USEREMAIL: ${data.result[i].useremail}</p>
+              <p>CONTACT NUMBER:  ${data.result[i].usercontactnumber}</p>
+              <p>ADDRESS:  ${data.result[i].useraddress}</p>
+              </div>
+              `
        
         
           document.getElementById("course").innerHTML=posthtml
+          document.getElementById("personalinfo").innerHTML=html
           }
                   
   }
