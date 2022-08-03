@@ -102,7 +102,7 @@ axios({
 
 
 function editbtn(courseid){
-
+sessionStorage.getItem("courseid",courseid)
 
 
 axios.get(`http://localhost:3000/Course/`+courseid)      
@@ -121,21 +121,20 @@ axios.get(`http://localhost:3000/Course/`+courseid)
               .then((data)=>{
          
                 for (let i = 0; i < data.result.length; i++) {
-                 var a=data[i].result.coursecode;
-                 var b=data[i].result.coursename;
-                 var c=data[i].result.courseabbrev;
+                 var a=data.result[i].coursecode;
+                 console.log(a)
+                 var b=data.result[i].coursename;
+                 var c=data.result[i].courseabbrev;
+                 var d=data.result[i].courseid;
 
 
 }
 
 document.getElementById("editcoursecode").value=a;
 document.getElementById("editcoursename").value=b;
-document.getElementById("editcourseabbrev").value=c;
+document.getElementById("editcourseabbrv").value=c;
+document.getElementById("courseid").value=d;
 
-
-
-
-           
               })
               .catch((error) => alert(error.message));
 
@@ -145,7 +144,45 @@ document.getElementById("editcourseabbrev").value=c;
 
 
 
-            
+function btnedit(){
+  // const courseid=sessionStorage.getItem("courseid")
+
+  const a= document.getElementById("editcoursecode").value;
+  const b= document.getElementById("editcoursename").value;
+   const c=document.getElementById("editcourseabbrv").value;
+   const d=document.getElementById("courseid").value;
+
+   const data={
+    coursecode:a,
+    coursename:b,
+    courseabbrev:c
+  }
+
+
+  axios({
+    method: 'put',
+    url: 'http://localhost:3000/Course/'+d,
+    data: data,
+ 
+    headers: { 'Content-Type': 'application/json' }
+  })      
+          .then((res) => {
+            if (res.status === 200) {
+                console.log("Success!");
+                alert("success");
+               location.reload();
+                
+            } else {
+            alert("error");
+            }
+          })
+  
+         
+          .catch((error) => alert(error.message))
+
+
+
+}
 
 
 
