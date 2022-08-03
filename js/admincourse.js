@@ -102,9 +102,42 @@ axios({
 
 
 function editbtn(courseid){
-let a=data.result[i].coursecode
-document.getElementById("course-code2").value=a
 
+
+
+axios.get(`http://localhost:3000/Course/`+courseid)      
+              .then((res) => {
+                if (res.status === 200) {
+                    console.log("Success!");
+                    
+                    console.log(res)
+                    
+                    return res.data
+                } else {
+                  res.json().then((error) => { throw error });
+                }
+              })
+
+              .then((data)=>{
+         
+                for (let i = 0; i < data.result.length; i++) {
+                 var a=data[i].result.coursecode;
+                 var b=data[i].result.coursename;
+                 let c=data[i].result.courseabbrev;
+
+
+}
+
+document.getElementById("editcoursecode").value=a;
+document.getElementById("editcoursename").value=b;
+document.getElementById("editcourseabbrev").value=c;
+
+
+
+
+           
+              })
+              .catch((error) => alert(error.message));
 
 }
 
