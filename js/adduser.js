@@ -1,5 +1,5 @@
 
-
+const token=sessionStorage.getItem("token");
 
 window.addEventListener("DOMContentLoaded", function () {
 
@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", function () {
             method: 'post',
             url: 'http://localhost:3000/user',
             data: data,
-            headers: { 'Content-Type': 'application/json' }
+            headers: {  "Authorization": "Bearer " + token}
           })      
                   .then((res) => {
                     if (res.status === 201) {
