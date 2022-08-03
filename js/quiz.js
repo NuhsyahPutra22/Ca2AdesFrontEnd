@@ -1,16 +1,21 @@
 function submit() {
   // variables declaration
   var points = 0;
-  var q1 = document.quiz.q1.value;
-  var q2 = document.quiz.q2.value;
-  var q3 = document.quiz.q3.value;
-  var q4 = document.quiz.q4.value;
-  var q5 = document.quiz.q5.value;
-  var q6 = document.quiz.q6.value;
-  var q7 = document.quiz.q7.value;
+  // var q1 = document.quiz.q1.value;
+  // var q2 = document.quiz.q2.value;
+  // var q3 = document.quiz.q3.value;
+  // var q4 = document.quiz.q4.value;
+  // var q5 = document.quiz.q5.value;
+  // var q6 = document.quiz.q6.value;
+  // var q7 = document.quiz.q7.value;
+  var answer = document.getElementById("");
   var result = document.getElementById("result");
   var quiz = document.getElementById("quiz");
-  var quiz = document.getElementById("button");
+  var button = document.getElementById("button");
+
+  for (let i=0; i > i.length; i++) {
+    
+  }
 
   // if else conditions here
   // Question 1

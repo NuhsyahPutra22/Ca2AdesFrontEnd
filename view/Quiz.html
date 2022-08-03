@@ -105,13 +105,25 @@
           <!-- Question 8 -->
           <div class="question">
             <p>Q8. What are some programming languages you are very familiar with?</p>
-            <p><input type="text" name="q8" placeholder="Eg. HTML/CSS, JavaScript, etc."></p>
+            <p><input type="text" name="q8" id="inputs" placeholder="Eg. HTML/CSS, JavaScript, etc."></p>
+          </div>
+
+          <!-- Question 9 -->
+          <div class="question">
+            <p>Q9. What are some databases you are very familiar with?</p>
+            <p><input type="text" name="q9" id="inputs" placeholder="Eg. MongoDB, MySQL, etc."></p>
+          </div>
+
+          <!-- Question 10 -->
+          <div class="question">
+            <p>Q10. List the full acronym of the LAMP stack.</p>
+            <p><input type="text" name="q10" id="inputs" placeholder="Please type here..."></p>
           </div>
 
         </form>
         
         <!-- Submit Button -->
-        <input type="button" name="" value="Submit!" id="button" onclick="submit()">
+        <input type="button" name="" value="Submit!" id="button" class="submit" onclick="submit()">
 
         <!-- Quiz Result will appear here -->
         <p id="result"></p>
