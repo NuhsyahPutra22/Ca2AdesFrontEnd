@@ -73,8 +73,9 @@
               </div>
           </div>
           <div class="form-group">
-            <button id="insert-btn" type="submit" onclick="AddModule()" class="btn btn-success">
-          </div>
+            <button type="button" class="btn float-right create-module-button btn-success"
+                data-bs-target="#create-module" id="insert-btn" onclick="AddModule()">+ Create Module</button>
+        </div>
       </div>
   
       <p>Update Module:</p>
@@ -95,7 +96,8 @@
               </div>  
           </div>
           <div class="form-group">
-            <button id="edit-btn" type="submit" class="btn btn-info" onclick="updateButtonPress()">
+              <button type="button" class="btn float-end create-module-button btn-info"
+                data-bs-target="#create-module" id="edit-btn" onclick="updateButtonPress()">+ UpdateModuleinfo</button>
           </div>
       </div>
 
@@ -111,7 +113,7 @@
                 <th scope="col" class="col-5" >SemesterName</th>
               </tr>
             </thead>
-            <tbody class="module-content" id="courselist">
+            <tbody class="module-content" id="modulelist">
 
             </tbody>
                             

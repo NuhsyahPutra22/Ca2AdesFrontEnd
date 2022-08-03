@@ -8,130 +8,155 @@ const tableBody = document.querySelector('#courselist');
 window.onload = function loadScreen() {
     GetCoursename()
     showModule()
-    
+
 }
 function GetCoursename() {
-    let Dropdown="";
+    let Dropdown = "";
     fetch(`${STORAGE_API_HOST}/GetCourseName`,
-    {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        
-    })
-        .then((response) => response.json())
-        .then((data) => {
-         for (let i=0; i<data.length; i++) {
-            let coursename=data[i].coursename
-            console.log(data[i]);
-            console.log(coursename);
-            Dropdown+=  "<option>"+coursename+"</option>"
-            document.getElementById("Acourseid").innerHTML=Dropdown
-         }  
-        }) 
-    }
-           
-
-function AddModule() {
-    const modulecode=document.getElementById("Amodule-code").value;
-    const modulename=document.getElementById("Amodule-name").value;
-    const moduledetail=document.getElementById("Amodule-details").value;
-    const semestername=document.getElementById("Asemestername").value;
-    const coursename=document.getElementById("Acourseid").value;
-    fetch(`${STORAGE_API_HOST}/GetCourseid/${coursename}`, 
         {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
-            
+
         })
-            .then((response) => response.json())
-            .then((data) => { 
-                const courseid=data.courseid;
-                fetch(`${STORAGE_API_HOST}/Module`, {
+        .then((response) => response.json())
+        .then((data) => {
+            for (let i = 0; i < data.length; i++) {
+                let coursename = data[i].coursename
+                console.log(data[i].courseid);
+                console.log(coursename);
+                Dropdown += `<option value="${data[i].coursename}">` + coursename + "</option>"
+                document.getElementById("Acourseid").innerHTML = Dropdown
+            }
+        })
+}
+
+
+function AddModule() {
+    const modulecode = document.getElementById("Amodule-code").value;
+    const modulename = document.getElementById("Amodule-name").value;
+    const moduledetail = document.getElementById("Amodule-details").value;
+    const semestername = document.getElementById("Asemestername").value;
+    const coursename = document.getElementById("Acourseid").value;
+    fetch(`${STORAGE_API_HOST}/GetCourseid/${coursename}`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.courseid)
+            let courseid = data[0].courseid;
+            console.log(courseid)
+            fetch(`${STORAGE_API_HOST}/Module`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({modulecode,modulename,moduledetail,courseid,semestername}),
+                body: JSON.stringify({ modulecode, modulename, moduledetail, courseid, semestername }),
             })
                 .then((response) => {
-                response.json() 
-                console.log("successfully Added Module")
-                showModule();
+                    response.json()
+                    console.log("successfully Added Module")
+                    showModule();
                 }
                 )
-                }
-            )}
-            
-            
-    function showModule() {
-        let html = ``;
-        fetch(`${STORAGE_API_HOST}/Module`,
-        {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data)
-                console.log(Object.keys(data).length)
-                console.log("working")
-                const length=Object.keys(data).length
-                for (let i = 0; i < length; i++) {
-                    let module = data.result[i];
-                    let courseid = data.result[i].courseid;
-                   console.log(courseid);
-                fetch(`${STORAGE_API_HOST}/CourseName/${courseid}`, 
-                {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                })
-                .then((response) => response.json())
-                .then(data => {
-                    console.log(data)
-                    let coursename=data[0].coursename;
-                console.log(module);
-                console.log(coursename);
-              const row =`
-              <tr>
-               <td>${module["modulecode"]}</td>
-                 <td>${module["modulename"]}</td>
-                 <td>${module["moduledetail"]}</td>
-                 <td>${coursename}</td>
-                 <td>${module["semestername"]}</td>
-             </tr>
-           `;
-                html += row;
-              const tableBody = document.getElementById("courselist");  
-              tableBody.innerHTML = html;
-            })
         }
-    })
-    
-            .catch((error) => alert(error.message))
-    
-      }
+        )
+}
+
+function ClearModulefromtable() {
+    const tableBody = document.getElementById("modulelist");
+    tableBody.innerHTML = '';
+}
 
 
 
-    function updateModule() {
+function showModule() {
+    axios.get(`${STORAGE_API_HOST}/Module`)
+        .then((res) => {
+            if (res.status === 200) {
+                console.log("Success!");
 
-    }
+                console.log(res)
+
+                return res.data
+            } else {
+                res.json().then((error) => { throw error });
+            }
+        })
+
+        .then((data) => {
+            var tbody = `<table>`
+            for (let i = 0; i < data.result.length; i++) {
+                console.log(data.result[0].modulecode)
+                tbody += `<tbody>`
+
+                tbody += `  <th scope="col" class="col-2" >${data.result[i].modulecode}</th>`
+                tbody += `<th scope="col" class="col-7" >${data.result[i].modulename}</th>`
+                tbody += `<th scope="col" class="col-3" >${data.result[i].moduledetail}</th>`
+                tbody += `<th scope="col" class="col-3" >${data.result[i].courseid}</th>`
+                tbody += `<th scope="col" class="col-3" >${data.result[i].semestername}</th>`
+                tbody += `<th scope="col" class="col-3" > <button onclick="UpdateModuleinfobtn(${data.result[i].moduleid})"> EDIT</button></th>`
+                tbody += `<th scope="col" class="col-3" > <button onclick="deleteModuleinfobtn(${data.result[i].moduleid})"> DELETE</button></th>`
+            }
+            tbody += `</table>`
+
+
+            document.getElementById("modulelist").innerHTML = tbody
+
+
+        })
+        .catch((error) => alert(error.message));
+}
 
 
 
-    function DeleteModule() {
 
-    }
-            
-          
+
+
+
+
+
+
+
+function updateModule() {
+
+}
+
+
+
+//DeleteModuleInfo
+function DeleteModuleInfo(moduleid){
+      console.log(moduleid);
+      fetch(`${STORAGE_API_HOST}/Module/${moduleid}`,
+      {
+       method: 'DELETE',
+       headers: {
+           'Content-Type': 'application/json',
+       },
+   })
+   .then((response) => {
+    if (response.status === 200) {
+      // Ok
+      showModule()
+    //   .then((data) =>console.log(data)) 
+       .catch((error) => alert(error.message))
+      console.log("Successfully delete the Moduleinfo", "success", 1500);
+      showModule();
+  // });
+    $("#deleteCnlModelBtn").on("click", function () {
+      console.log("Cancelled deleting the Moduleinfo", "cancelled", 1500);
+      showModule();
+    });
+  }})
+  
+  }
+
+
 
 
