@@ -123,7 +123,7 @@ axios.get(`http://localhost:3000/Course/`+courseid)
                 for (let i = 0; i < data.result.length; i++) {
                  var a=data[i].result.coursecode;
                  var b=data[i].result.coursename;
-                 let c=data[i].result.courseabbrev;
+                 var c=data[i].result.courseabbrev;
 
 
 }
