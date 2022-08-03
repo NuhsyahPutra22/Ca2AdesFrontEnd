@@ -14,6 +14,7 @@ window.addEventListener("DOMContentLoaded", function () {
         let e= document.getElementById("address").value;
         let f= document.getElementById("courseid").value;
         let g= document.getElementById("role").value;
+        let h= document.getElementById("semestername").value;
 
         const data={
             username:a,
@@ -22,7 +23,8 @@ window.addEventListener("DOMContentLoaded", function () {
              useraddress:e,
              usercontactnumber:d,
              userrole:g,
-             courseid:f
+             courseid:f,
+             semestername:h,
           }
 
           axios({

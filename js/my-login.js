@@ -39,7 +39,7 @@ axios.post(`http://localhost:3000/login`,requestBody)
                 if (res.status === 200) {
                     console.log("Success!");
                     console.log(res)
-                    window.location.href = "../view/index.html";
+                    window.location.href = "https://gmstrikerz.github.io/Ca2AdesFrontEnd/view/index.html";
                     return res.data
                 } else {
                   res.json().then((error) => { throw error });
