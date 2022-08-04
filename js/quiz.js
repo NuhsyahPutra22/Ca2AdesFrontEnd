@@ -1,3 +1,7 @@
+const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+const STORAGE_API_HOST = isLocalhost ? `http://localhost:3000` : `https://adesschoolmanagementsystemca2.herokuapp.com/ `;
+
+
 function submit() {
   // variables declaration
   var points = 0;
