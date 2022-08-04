@@ -13,7 +13,7 @@ function submit() {
   var q5 = document.getElementById("q5-input").value;
   var q6 = document.getElementById("q6-input").value;
   var q7 = document.getElementById("q7-input").value;
-  var a = q7.split(',');
+  var q7Arr = q7.split(',');
   // var answer = document.getElementById("");
   var result = document.getElementById("result");
   var quiz = document.getElementById("quiz");
@@ -75,7 +75,10 @@ function submit() {
     }
 
     //Question 7
-    switch (a) {
+    for (i=0; i< q7Arr.length; i++) {
+      let x = q7Arr[i];
+    
+    switch (x) {
       case "HTML":
         points++;
         break;
@@ -121,15 +124,16 @@ function submit() {
       default:
         points = points;
     }
+  }
 
     quiz.style.display = "none";
     button.style.display = "none";
 
     // points results
-    if (points > 15) {
+    if (points > 14) {
       // result.textContext = `Your result s ${result}/20. Software Development`;
       result.innerHTML = `Your result is ${points}. Software Development`;
-    } else if (points > 10) {
+    } else if (points > 9) {
       // result.textContext = `Your result s ${result}/20. Immersive Simulation`;
       result.innerHTML = `Your result is ${points}. Immersive Simulation`;
     } else {
@@ -137,6 +141,44 @@ function submit() {
       result.innerHTML = `Your result is ${points}. User Experience`;
     }
   
+    //connect
+    // var a = document.getElementById("q1-input").value;
+    // var b = document.getElementById("q2-input").value;
+    // var c = document.getElementById("q3-input").value;
+    // var d = document.getElementById("q4-input").value;
+    // var e = document.getElementById("q5-input").value;
+    // var f = document.getElementById("q6-input").value;
+    // var g = document.getElementById("q7-input").value;
+
+    const data={
+      q1:q1,
+      q2:q2,
+      q3:q3,
+      q4:q4,
+      q5:q5,
+      q6:q6,
+      q7:q7,
+      total_score:total_score
+    }
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/Quiz',
+      data: data,
+      headers: { 'Content-Type': 'application/json' }
+      })      
+            .then((res) => {
+              if (res.status === 201) {
+                  console.log("Success!");
+                  alert("success");
+                  location.reload();
+              
+              } else {
+              alert("error");
+              }
+            })
+
+       
+            .catch((error) => alert(error.message))
 }
 
 function refresh() {
@@ -168,10 +210,8 @@ axios.get(`http://localhost:3000/Quiz`)
   tbody+=`<th scope="col" class="col-1" >${data.result[i].q5}</th>`
   tbody+=`<th scope="col" class="col-1" >${data.result[i].q6}</th>`
   tbody+=`<th scope="col" class="col-1" >${data.result[i].q7}</th>`
-  tbody+=`<th scope="col" class="col-1" >${data.result[i].q8}</th>`
-  tbody+=`<th scope="col" class="col-1" >${data.result[i].q9}</th>`
-  tbody+=`<th scope="col" class="col-1" >${data.result[i].q10}</th>`
   tbody+=`<th scope="col" class="col-1" >${data.result[i].total_score}</th>`
+  tbody+=`<th scope="col" class="col-1" > <button onclick="deleteQuizbtn(${data.result[i].quizid})">DELETE</button></th>`
 }
 tbody+=`</table>`
 
@@ -181,3 +221,64 @@ document.getElementById("quizlist").innerHTML=tbody
            
               })
               .catch((error) => alert(error.message))
+              function deleteQuizbtn(quizid){
+                console.log(quizid);
+                axios.delete("http://localhost:3000/Quiz/"+quizid, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(function (response) {
+                    if (response.status === 200) {
+                        alert('Delete successfull!');
+                        location.reload();
+                    } else {
+                        alert('Failed to delete!')
+                        console.log(response);
+                    }
+                })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            }
+
+
+// function createAttempt(){
+
+// var a = document.getElementById("q1-input").value;
+// var b = document.getElementById("q2-input").value;
+// var c = document.getElementById("q3-input").value;
+// var d = document.getElementById("q4-input").value;
+// var e = document.getElementById("q5-input").value;
+// var f = document.getElementById("q6-input").value;
+// var g = document.getElementById("q7-input").value;
+
+// const data={
+//   q1:a,
+//   q2:b,
+//   q3:c,
+//   q4:d,
+//   q5:e,
+//   q6:f,
+//   q7:g
+// }
+// axios({
+//   method: 'post',
+//   url: 'http://localhost:3000/Quiz',
+//   data: data,
+//   headers: { 'Content-Type': 'application/json' }
+// })      
+//         .then((res) => {
+//           if (res.status === 201) {
+//               console.log("Success!");
+//               alert("success");
+//               location.reload();
+              
+//           } else {
+//           alert("error");
+//           }
+//         })
+
+       
+//         .catch((error) => alert(error.message))
+// }
