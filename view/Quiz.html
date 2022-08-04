@@ -123,6 +123,12 @@
             <p><input type="text" name="q7" class="inputs" id="q7-input" placeholder="Eg. HTML, CSS, Java, JavaScript, etc."></p>
           </div>
 
+          <!-- Question 8 -->
+          <div class="question">
+            <p>State your userid</p>
+            <p><input type="text" name="q" class="inputs" id="user-input" placeholder="Eg. 1"></p>
+          </div>
+
         </form>
         
         <!-- Submit Button -->
@@ -130,6 +136,9 @@
 
         <!-- Quiz Result will appear here -->
         <p id="result"></p>
+
+        <!-- Create input -->
+        <input type="button" name="" value="Enter" id="button" class="submit" onclick="createAttempt()">
         
         <!-- Refresh button -->
         <input type="button" name="" value="Try Again" id="reload-button" onclick="refresh()">
@@ -149,7 +158,8 @@
                 <th scope="col" class="col-1" >Q6</th>
                 <th scope="col" class="col-1" >Q7</th>
                 <th scope="col" class="col-1" >Total Score</th>
-                <th scope="col" class="col-1" >Userid</th>
+                <th scope="col" class="col-1" >userid</th>
+                <th scope="col" class="col-1" >DELETE</th>
 
               </tr>
             </thead>
