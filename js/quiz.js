@@ -5,13 +5,15 @@ const STORAGE_API_HOST = isLocalhost ? `http://localhost:3000` : `https://adessc
 function submit() {
   // variables declaration
   var points = 0;
-  var q = document.quiz.q.value;
-  // var q2 = document.quiz.q2.value;
-  // var q3 = document.quiz.q3.value;
-  // var q4 = document.quiz.q4.value;
-  // var q5 = document.quiz.q5.value;
-  // var q6 = document.quiz.q6.value;
-  var q7 = document.quiz.q7.value.split(',');
+  // var q = JSON.stringify(document.quiz.q.value);
+  var q1 = document.getElementById("q1-input").value;
+  var q2 = document.getElementById("q2-input").value;
+  var q3 = document.getElementById("q3-input").value;
+  var q4 = document.getElementById("q4-input").value;
+  var q5 = document.getElementById("q5-input").value;
+  var q6 = document.getElementById("q6-input").value;
+  var q7 = document.getElementById("q7-input").value;
+  var a = q7.split(',');
   // var answer = document.getElementById("");
   var result = document.getElementById("result");
   var quiz = document.getElementById("quiz");
@@ -19,61 +21,61 @@ function submit() {
 
   // if else conditions here
   // Question 1
-  if (q == 1) {
+  if (q1 == "1") {
     points += 2;
-  } else if (q == 2) {
+  } else if (q1 == "2") {
     points++;
   } else {
     points = points;
   }
 
   //Question 2
-  // if (q2 == "Java") {
-  //   points += 2;
-  // } else if (q2 == "C#") {
-  //   points++;
-  // } else {
-  //   points = points;
-  // }
+  if (q2 == "1") {
+    points += 2;
+  } else if (q2 == "2") {
+    points++;
+  } else {
+    points = points;
+  }
 
     //Question 3
-    // if (q3 == "Programming") {
-    //   points += 2;
-    // } else if (q3 == "Gaming") {
-    //   points++;
-    // } else {
-    //   points = points;
-    // }
+    if (q3 == "1") {
+      points += 2;
+    } else if (q3 == "2") {
+      points++;
+    } else {
+      points = points;
+    }
 
     //Question 4
-    // if (q4 == "SD") {
-    //   points += 2;
-    // } else if (q4 == "IS") {
-    //   points++;
-    // } else {
-    //   points = points;
-    // }
+    if (q4 == "1") {
+      points += 2;
+    } else if (q4 == "2") {
+      points++;
+    } else {
+      points = points;
+    }
 
     //Question 5
-    // if (q5 == "yes") {
-    //   points += 2;
-    // } else if (q5 == "ok") {
-    //   points++;
-    // } else {
-    //   points = points;
-    // }
+    if (q5 == "1") {
+      points += 2;
+    } else if (q5 == "2") {
+      points++;
+    } else {
+      points = points;
+    }
 
     //Question 6
-    // if (q6 == "kinesthetic") {
-    //   points += 2;
-    // } else if (q6 == "Auditory") {
-    //   points++;
-    // } else {
-    //   points = points;
-    // }
+    if (q6 == "1") {
+      points += 2;
+    } else if (q6 == "2") {
+      points++;
+    } else {
+      points = points;
+    }
 
     //Question 7
-    switch (q7) {
+    switch (a) {
       case "HTML":
         points++;
         break;
