@@ -61,7 +61,7 @@ function AddModule() {
             })
                 .then((response) => {
                     response.json()
-                    console.log("successfully Added Module")
+                    alert("successfully Added Module")
                     showModule();
                 }
                 )
@@ -101,8 +101,8 @@ function showModule() {
                 tbody += `<th scope="col" class="col-3" >${data.result[i].moduledetail}</th>`
                 tbody += `<th scope="col" class="col-3" >${data.result[i].courseid}</th>`
                 tbody += `<th scope="col" class="col-3" >${data.result[i].semestername}</th>`
-                tbody += `<th scope="col" class="col-3" > <button onclick="UpdateModuleinfobtn(${data.result[i].moduleid})"> EDIT</button></th>`
-                tbody += `<th scope="col" class="col-3" > <button onclick="deleteModuleinfobtn(${data.result[i].moduleid})"> DELETE</button></th>`
+                tbody += `<th scope="col" class="col-3" > <button onclick=" Updatemodulebtn(${data.result[i].moduleid})"> EDIT</button></th>`
+                tbody += `<th scope="col" class="col-3" > <button onclick="DeleteModuleInfo(${data.result[i].moduleid})"> DELETE</button></th>`
             }
             tbody += `</table>`
 
@@ -112,51 +112,121 @@ function showModule() {
 
         })
         .catch((error) => alert(error.message));
-}
-
-
-
-
-
-
-
-
-
-
-
-function updateModule() {
 
 }
 
+
+function Updatemodulebtn(moduleid){
+    sessionStorage.getItem("moduleid",moduleid)
+    
+    
+    axios.get(`http://localhost:3000/Module/`+moduleid)      
+                  .then((res) => {
+                    if (res.status === 200) {
+                        console.log("Success!");
+                        
+                        
+                        return res.data
+                    } else {
+                      res.json().then((error) => { throw error });
+                    }
+                  })
+    
+                  .then((data)=>{
+             
+                    for (let i = 0; i < data.result.length; i++) {
+                     var mc=data.result[i].modulecode;
+                     console.log(mc)
+                     var mn=data.result[i].modulename;
+                     var md=data.result[i].moduledetail;
+                     var mid=data.result[i].moduleid;
+    
+    
+    }
+    
+    document.getElementById("Updatemodule-code").value=mc;
+    document.getElementById("Updatemodule-name").value=mn;
+    document.getElementById("Updatemodule-details").value=md;
+    document.getElementById("moduleid").value=mid;
+    
+                  })
+                  .catch((error) => alert(error.message));
+    
+    }
+    
+    
+    
+    
+    
+    function updateModulebtn(){
+    
+      const mc= document.getElementById("Updatemodule-code").value;
+      const mn= document.getElementById("Updatemodule-name").value;
+       const md=document.getElementById("Updatemodule-details").value;
+       const mid=document.getElementById("moduleid").value;
+    
+       const data={
+        modulecode:mc,
+        modulename:mn,
+        moduledetail:md
+      }
+    
+    
+      axios({
+        method: 'put',
+        url: 'http://localhost:3000/Module/'+mid,
+        data: data,
+     
+        headers: { 'Content-Type': 'application/json' }
+      })      
+              .then((res) => {
+                if (res.status === 200) {
+                    console.log("Success!");
+                    alert("success");
+                   location.reload();
+                    
+                } else {
+                alert("error");
+                }
+              })
+      
+             
+              .catch((error) => alert(error.message))
+    
+    
+    
+    }
+    
+    
+
+
+        
 
 
 //DeleteModuleInfo
-function DeleteModuleInfo(moduleid){
-      console.log(moduleid);
-      fetch(`${STORAGE_API_HOST}/Module/${moduleid}`,
-      {
-       method: 'DELETE',
-       headers: {
-           'Content-Type': 'application/json',
-       },
-   })
-   .then((response) => {
-    if (response.status === 200) {
-      // Ok
-      showModule()
-    //   .then((data) =>console.log(data)) 
-       .catch((error) => alert(error.message))
-      console.log("Successfully delete the Moduleinfo", "success", 1500);
-      showModule();
-  // });
-    $("#deleteCnlModelBtn").on("click", function () {
-      console.log("Cancelled deleting the Moduleinfo", "cancelled", 1500);
-      showModule();
-    });
-  }})
-  
-  }
+function DeleteModuleInfo(moduleid) {
+    console.log(moduleid);
+    fetch(`${STORAGE_API_HOST}/Module/${moduleid}`,
+        {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((response) => {
+            if (response.status === 200) {
+                // Ok
+                //   .then((data) =>console.log(data)) 
+                console.log("Successfully delete the Moduleinfo");
+                alert("Successfully delete the Moduleinfo", "success", 1500);
+                location.reload();
+                showModule();
+                // });
+            }
+        })
 
+}
+    
 
 
 

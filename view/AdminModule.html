@@ -84,20 +84,23 @@
           <div class="update-module-form row">
               <div class="form-group">
                   <label for="module-code">Module Code:</label>
-                  <input type="text" class="form-control" id="Umodule-code" aria-describedby="module-code" placeholder="Module Code">
+                  <input type="text" class="form-control" id="Updatemodule-code" aria-describedby="module-code" placeholder="Module Code">
               </div>
               <div class="form-group">
                   <label for="module-name">Module Name:</label>
-                  <input type="text" class="form-control" id="Umodule-name" aria-describedby="module-name" placeholder="Module Name">
+                  <input type="text" class="form-control" id="Updatemodule-name" aria-describedby="module-name" placeholder="Module Name">
               </div>
               <div class="form-group">
                   <label for="module-details">Module Details:</label>
-                  <input type="text" class="form-control" id="Umodule-details" placeholder="Module Details">
+                  <input type="text" class="form-control" id="Updatemodule-details" placeholder="Module Details">
               </div>  
           </div>
+          <div style="  visibility: hidden;">
+            <input type="text" id="moduleid">
+        </div>
           <div class="form-group">
               <button type="button" class="btn float-end create-module-button btn-info"
-                data-bs-target="#create-module" id="edit-btn" onclick="updateButtonPress()">+ UpdateModuleinfo</button>
+                data-bs-target="#update-module" id="edit-btn" onclick="updateModulebtn()">+ UpdateModuleinfo</button>
           </div>
       </div>
 
@@ -111,6 +114,10 @@
                 <th scope="col" class="col-3" >Module Details</th>
                 <th scope="col" class="col-4" >Course Name</th>
                 <th scope="col" class="col-5" >SemesterName</th>
+                <th scope="col" class="col-5" >EDIT</th>
+                <th scope="col" class="col-5" >DELETE</th>
+             
+
               </tr>
             </thead>
             <tbody class="module-content" id="modulelist">
