@@ -49,75 +49,61 @@
           <!-- Question 1 -->
           <div class="question">
             <p>Q1. Are you very confident at programming?</p>
-            <p><input type="radio" name="q1" value="yes">A. Super confident!</p>
-            <p><input type="radio" name="q1" value="neutral">B. Neutral</p>
-            <p><input type="radio" name="q1" value="no">C. Not so good</p>
+            <p>1. Super confident!</p>
+            <p>2. Neutral</p>
+            <p>3. Not so good</p>
+            <p><input type="text" name="q" id="inputs" placeholder="Please type number here"></p>
           </div>
 
           <!-- Question 2 -->
           <div class="question">
             <p>Q2. Which programming language would you like to learn?</p>
-            <p><input type="radio" name="q2" value="Java">A. Java</p>
-            <p><input type="radio" name="q2" value="C#">B. C#</p>
-            <p><input type="radio" name="q2" value="HTML/CSS">C. HTML/CSS (in-depth)</p>
+            <p>1. Java</p>
+            <p>2. C#</p>
+            <p>3. HTML/CSS (in-depth)</p>
+            <p><input type="text" name="q" id="inputs" placeholder="Please type number here"></p>
           </div>
 
           <!-- Question 3 -->
           <div class="question">
             <p>Q3. Besides programming, do you have an interest in these areas?</p>
-            <p><input type="radio" name="q3" value="Programming">A. Programming / Learning a new language (language or code)</p>
-            <p><input type="radio" name="q3" value="Gaming">B. Gaming</p>
-            <p><input type="radio" name="q3" value="Arts">C. Art / Music / Design</p>
+            <p>1. Programming / Learning a new language (language or code)</p>
+            <p>2. Gaming</p>
+            <p>3. Art / Music / Design</p>
+            <p><input type="text" name="q" id="inputs" placeholder="Please type number here"></p>
           </div>
 
           <!-- Question 4 -->
           <div class="question">
             <p>Q4. If you were to choose to work in a tech company, which job title would you like to apply for?</p>
-            <p><input type="radio" name="q4" value="SD">A. Software Engineer / Software Developer</p>
-            <p><input type="radio" name="q4" value="IS">B. Immersive Engineer / Game Developer</p>
-            <p><input type="radio" name="q4" value="UX">C. Front-End Developer / UI/UX Designer</p>
+            <p>1. Software Engineer / Software Developer</p>
+            <p>2. Immersive Engineer / Game Developer</p>
+            <p>3. Front-End Developer / UI/UX Designer</p>
+            <p><input type="text" name="q" id="inputs" placeholder="Please type number here"></p>
           </div>
 
           <!-- Question 5 -->
           <div class="question">
             <p>Q5. How confident are you with HTML/CSS/JavaScript?</p>
-            <p><input type="radio" name="q5" value="yes">A. Over confident!</p>
-            <p><input type="radio" name="q5" value="ok">B. Quite ok</p>
-            <p><input type="radio" name="q5" value="no">C. Quite ok, but I prefer HTML/CSS more!</p>
+            <p>1. Over confident!</p>
+            <p>2. Quite ok</p>
+            <p>3. Quite ok, but I prefer HTML/CSS more!</p>
+            <p><input type="text" name="q" id="inputs" placeholder="Please type number here"></p>
           </div>
 
           <!-- Question 6 -->
           <div class="question">
             <p>Q6. What kind of learner are you?</p>
-            <p><input type="radio" name="q6" value="kinesthetic">A. Kinesthetic</p>
-            <p><input type="radio" name="q6" value="Auditory">B. Auditory</p>
-            <p><input type="radio" name="q6" value="Visual">C. Visual</p>
+            <p>1. Kinesthetic</p>
+            <p>2. Auditory</p>
+            <p>3. Visual</p>
+            <p><input type="text" name="q" id="inputs" placeholder="Please type number here"></p>
           </div>
 
           <!-- Question 7 -->
           <div class="question">
-            <p>Q7. Which DIT Specialization track are you interested in?</p>
-            <p><input type="radio" name="q7" value="SD">A. Software Development</p>
-            <p><input type="radio" name="q7" value="IS">B. Immersive Simulation</p>
-            <p><input type="radio" name="q7" value="UX">C. User Experience</p>
-          </div>
-
-          <!-- Question 8 -->
-          <div class="question">
-            <p>Q8. What are some programming languages you are very familiar with?</p>
-            <p><input type="text" name="q8" id="inputs" placeholder="Eg. HTML/CSS, JavaScript, etc."></p>
-          </div>
-
-          <!-- Question 9 -->
-          <div class="question">
-            <p>Q9. What are some databases you are very familiar with?</p>
-            <p><input type="text" name="q9" id="inputs" placeholder="Eg. MongoDB, MySQL, etc."></p>
-          </div>
-
-          <!-- Question 10 -->
-          <div class="question">
-            <p>Q10. List the full acronym of the LAMP stack.</p>
-            <p><input type="text" name="q10" id="inputs" placeholder="Please type here..."></p>
+            <p>Q7. What are some programming languages you are very familiar with?</p>
+            <p><input type="text" name="q7" id="inputs" placeholder="Eg. HTML/CSS, JavaScript, etc."></p>
           </div>
 
         </form>
@@ -130,6 +116,31 @@
         
         <!-- Refresh button -->
         <input type="button" name="" value="Try Again" id="reload-button" onclick="refresh()">
+
+        <!-- Table -->
+        <h3>Quiz Board</h3>
+        <div id="content-item-quiz">
+          <table id="quiz-table" class="table">
+            <thead>
+              <tr class="align-middle">
+                <th scope="col" class="col-1" >ID</th>
+                <th scope="col" class="col-1" >Q1</th>
+                <th scope="col" class="col-1" >Q2</th>
+                <th scope="col" class="col-1" >Q3</th>
+                <th scope="col" class="col-1" >Q4</th>
+                <th scope="col" class="col-1" >Q5</th>
+                <th scope="col" class="col-1" >Q6</th>
+                <th scope="col" class="col-1" >Q7</th>
+                <th scope="col" class="col-1" >Total Score</th>
+              </tr>
+            </thead>
+            <tbody class="quiz-content" id="quizlist">
+
+            </tbody>
+                            
+          </table>
+        </div>
+
 
         <!-- Footer -->
         <div class="footer">
