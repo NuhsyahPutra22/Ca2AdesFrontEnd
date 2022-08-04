@@ -14,6 +14,27 @@ window.location.href="https://gmstrikerz.github.io/Ca2AdesFrontEnd/view/Login.ht
 
 }
 
+  axios.get(`http://localhost:3000/Course`)      
+  .then((res) => {
+    if (res.status === 200) {
+        console.log("Success!");
+        console.log(res)
+        return res.data
+    } else {
+      res.json().then((error) => { throw error });
+    }
+  })
+  
+  .then((data)=>{
+      var dropdown=`<select>`;
+      for (let i = 0; i < data.result.length; i++) {
+      dropdown+=`  <option value="${data.result[i].courseid}">${data.result[i].coursecode} ${data.result[i].coursename}</option>`
+
+      }
+      dropdown+=`</select>`
+      document.getElementById("courseid").innerHTML=dropdown
+  })
+
 
 
 
@@ -21,6 +42,11 @@ window.location.href="https://gmstrikerz.github.io/Ca2AdesFrontEnd/view/Login.ht
 
 
 window.addEventListener("DOMContentLoaded", function () {
+
+
+
+
+
 
     var createuser=document.getElementById("adduser");
 
