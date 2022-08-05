@@ -1,6 +1,6 @@
 var admin = sessionStorage.getItem("userrole")
 var b = sessionStorage.getItem("userid")
-
+var token=sessionStorage.getItem("token")
 
 //admin feature
 // admin can use admin mode or student mode
@@ -38,6 +38,30 @@ if (admin == "Admin") {
 
 
 
+if (token === null || isNaN(b)) {
+  // show sign in link
+   const html=`
+   <li class="nav-item" >
+   <a class="nav-link" href="Login.html">Login</a>
+ </li>
+   `
+   document.getElementById("loginlogout").innerHTML=html
+} else {
+  // show log out link
+
+  const html=`
+  <li class="nav-item" >
+  <a class="nav-link" href="Login.html">Log Out</a>
+</li>
+  `
+  document.getElementById("loginlogout").innerHTML=html
+  document.getElementById("loginlogout").click(function () {
+    window.sessionStorage.clear();
+    window.location.href="../view/Login.html"
+    window.alert("Successfully Log Out");
+})
+ 
+}
 
 
 
