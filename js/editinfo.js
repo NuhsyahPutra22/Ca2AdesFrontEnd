@@ -1,6 +1,7 @@
 const id=sessionStorage.getItem("userid")
 const token=sessionStorage.getItem("token");
 
+//get user info and auto fill in input
 axios.get(`http://localhost:3000/user/`+id)      
 .then((res) => {
   if (res.status === 200) {
@@ -28,7 +29,7 @@ axios.get(`http://localhost:3000/user/`+id)
 
 
 
-
+//button update click 
 function updateinfo(){
     let a=    document.getElementById("email").value;
     let b=  document.getElementById("password").value;
@@ -43,7 +44,7 @@ function updateinfo(){
          usercontactnumber:d
       }
 
-
+      //update from frontend to backend 
       axios({
         method: 'put',
         url: 'http://localhost:3000/user/'+id,

@@ -2,7 +2,8 @@ var admin=sessionStorage.getItem("userrole")
 const userrole=sessionStorage.getItem("userrole")
 const token=sessionStorage.getItem("token");
 
-
+//check is you are the admin or not
+//if no,go to login page
 if(userrole!=="Admin"){
 
 alert("Your role is not Admin")
@@ -12,7 +13,7 @@ window.location.href="https://gmstrikerz.github.io/Ca2AdesFrontEnd/view/Login.ht
 }
 
 
-
+//admin can choose student or admin mode
 if (admin=="Admin"){
     const  html=`
     <select  id="modes">
@@ -56,7 +57,7 @@ function gopage(){
 
 
 
-
+//get all user
 
 axios.get(`http://localhost:3000/user`)      
 .then((res) => {
@@ -70,6 +71,7 @@ axios.get(`http://localhost:3000/user`)
 })
 
 .then((data)=>{
+    //show in table and can delete any user
   var tbody=`<table>`
   for (let i = 0; i < data.result.length; i++) {
     
@@ -91,7 +93,7 @@ document.getElementById("courselist").innerHTML=tbody
 .catch((error) => alert(error.message))
 
 
-
+//delete user function
 function deleteuser(userid){
 
   axios.delete("http://localhost:3000/user/"+userid, {

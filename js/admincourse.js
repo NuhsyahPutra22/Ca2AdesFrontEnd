@@ -4,14 +4,16 @@ const STORAGE_API_HOST = isLocalhost ? `http://localhost:3000` : `https://adessc
 const token = sessionStorage.getItem("token");
 const userid=sessionStorage.getItem("userid");
 const userrole=sessionStorage.getItem("userrole");
-// if (token === null || isNaN(userid)||userrole!=="Admin") {
-//     console.log("Redirecting to login...");
-//     if(userrole!=="Admin"){
-//         alert("you are no admin")
-//     }
-//     window.location.href = "../view/login.html";
-// }
+//check are u have token or not
+if (token === null || isNaN(userid)||userrole!=="Admin") {
+    console.log("Redirecting to login...");
+    if(userrole!=="Admin"){
+        alert("you are no admin")
+    }
+    window.location.href = "../view/login.html";
+}
 
+//get course 
 axios.get(`http://localhost:3000/Course`)      
               .then((res) => {
                 if (res.status === 200) {
@@ -26,6 +28,7 @@ axios.get(`http://localhost:3000/Course`)
               })
 
               .then((data)=>{
+                //show in table and have edit and delete button for each
                 var tbody=`<table>`
                 for (let i = 0; i < data.result.length; i++) {
                   console.log(data.result[0].coursecode)
@@ -46,7 +49,7 @@ document.getElementById("courselist").innerHTML=tbody
               })
               .catch((error) => alert(error.message));
 
-
+              //delete course function
               function deletebtn(courseid){
                 console.log(courseid);
                 axios.delete("http://localhost:3000/Course/"+courseid, {
@@ -68,7 +71,7 @@ document.getElementById("courselist").innerHTML=tbody
                     })
             }
 
-
+//create course function
 function createcourse(){
 
 let a=document.getElementById("course-code").value;
@@ -100,7 +103,7 @@ axios({
         .catch((error) => alert(error.message))
 }
 
-
+//edit button press and get the course detail and auto fill inside the input
 function editbtn(courseid){
 sessionStorage.getItem("courseid",courseid)
 
@@ -143,9 +146,9 @@ document.getElementById("courseid").value=d;
 
 
 
-
+//update button press 
 function btnedit(){
-  // const courseid=sessionStorage.getItem("courseid")
+
 
   const a= document.getElementById("editcoursecode").value;
   const b= document.getElementById("editcoursename").value;

@@ -5,7 +5,8 @@
 const userrole=sessionStorage.getItem("userrole")
 const token=sessionStorage.getItem("token");
 
-
+//check are u admin
+//if no go to login page
 if(userrole!=="Admin"){
 
 alert("Your role is not Admin")
@@ -13,7 +14,7 @@ window.location.href="https://gmstrikerz.github.io/Ca2AdesFrontEnd/view/Login.ht
 
 
 }
-
+//get the course for dropdown list
   axios.get(`http://localhost:3000/Course`)      
   .then((res) => {
     if (res.status === 200) {
@@ -26,6 +27,7 @@ window.location.href="https://gmstrikerz.github.io/Ca2AdesFrontEnd/view/Login.ht
   })
   
   .then((data)=>{
+    //value is show in courseid
       var dropdown=`<select>`;
       for (let i = 0; i < data.result.length; i++) {
       dropdown+=`  <option value="${data.result[i].courseid}">${data.result[i].coursecode} ${data.result[i].coursename}</option>`
@@ -47,7 +49,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+  //create new user by get all information
     var createuser=document.getElementById("adduser");
 
     createuser.addEventListener("submit", function(event) {
@@ -71,7 +73,7 @@ window.addEventListener("DOMContentLoaded", function () {
              courseid:f,
              semestername:h,
           }
-
+//Authorization is add in
           axios({
             method: 'post',
             url: 'http://localhost:3000/user',

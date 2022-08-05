@@ -2,7 +2,7 @@ const isLocalhost = location.hostname === 'localhost' || location.hostname === '
 const STORAGE_API_HOST = isLocalhost ? `http://localhost:3000` : `https://adesschoolmanagementsystemca2.herokuapp.com/ `;
 
 
-
+//get all course
 axios.get(`http://localhost:3000/Course`)      
               .then((res) => {
                 if (res.status === 200) {
@@ -15,6 +15,7 @@ axios.get(`http://localhost:3000/Course`)
               })
 
               .then((data)=>{
+                //show in table
                 var tbody=`<table>`
                 for (let i = 0; i < data.result.length; i++) {
                   console.log(data.result[0].coursecode)
