@@ -12,6 +12,24 @@ if (token === null || isNaN(userid)||userrole!=="Admin") {
     }
     window.location.href = "../view/login.html";
 }
+ else {
+  // show log out link
+
+  const html=`
+  <li class="nav-item" >
+  <a class="nav-link" href="Login.html">Log Out</a>
+</li>
+  `
+  document.getElementById("loginlogout").innerHTML=html
+  document.getElementById("loginlogout").click(function () {
+    window.sessionStorage.clear();
+    window.location.href="../view/Login.html"
+    window.alert("Successfully Log Out");
+})
+ 
+}
+
+
 
 //get course 
 axios.get(`http://localhost:3000/Course`)      

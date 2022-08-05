@@ -1,5 +1,29 @@
 const id=sessionStorage.getItem("userid")
 const token=sessionStorage.getItem("token");
+const userrole=sessionStorage.getItem("userrole")
+if (token === null || isNaN(id)||userrole!=="Admin") {
+  console.log("Redirecting to login...");
+  if(userrole!=="Admin"){
+      alert("you are no admin")
+  }
+  window.location.href = "../view/login.html";
+}
+else {
+// show log out link
+
+const html=`
+<li class="nav-item" >
+<a class="nav-link" href="Login.html">Log Out</a>
+</li>
+`
+document.getElementById("loginlogout").innerHTML=html
+document.getElementById("loginlogout").click(function () {
+  window.sessionStorage.clear();
+  window.location.href="../view/Login.html"
+  window.alert("Successfully Log Out");
+})
+
+}
 
 //get user info and auto fill in input
 axios.get(`http://localhost:3000/user/`+id)      

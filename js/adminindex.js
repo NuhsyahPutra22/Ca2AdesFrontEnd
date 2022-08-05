@@ -1,16 +1,31 @@
 var admin=sessionStorage.getItem("userrole")
+var b = sessionStorage.getItem("userid")
 const userrole=sessionStorage.getItem("userrole")
 const token=sessionStorage.getItem("token");
 
 //check is you are the admin or not
 //if no,go to login page
-if(userrole!=="Admin"){
+if(userrole!=="Admin"||token===null|| isNaN(b)){
 
 alert("Your role is not Admin")
 window.location.href="Login.html"
-
-
-}
+}else {
+    // show log out link
+  
+    const html=`
+    <li class="nav-item" >
+    <a class="nav-link" href="Login.html">Log Out</a>
+  </li>
+    `
+    document.getElementById("loginlogout").innerHTML=html
+    document.getElementById("loginlogout").click(function () {
+      window.sessionStorage.clear();
+      window.location.href="../view/Login.html"
+      window.alert("Successfully Log Out");
+  })
+   
+  }
+  
 
 
 //admin can choose student or admin mode

@@ -1,6 +1,42 @@
 const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const STORAGE_API_HOST = isLocalhost ? `http://localhost:3000` : `https://adesschoolmanagementsystemca2.herokuapp.com `;
 
+
+
+var b = sessionStorage.getItem("userid")
+var token=sessionStorage.getItem("token")
+
+
+if (token === null || isNaN(b)) {
+  // show sign in link
+   const html=`
+   <li class="nav-item" >
+   <a class="nav-link" href="Login.html">Login</a>
+ </li>
+   `
+   document.getElementById("loginlogout").innerHTML=html
+} else {
+  // show log out link
+
+  const html=`
+  <li class="nav-item" >
+  <a class="nav-link" href="Login.html">Log Out</a>
+</li>
+  `
+  document.getElementById("loginlogout").innerHTML=html
+  document.getElementById("loginlogout").click(function () {
+    window.sessionStorage.clear();
+    window.location.href="../view/Login.html"
+    window.alert("Successfully Log Out");
+})
+ 
+}
+
+
+
+
+
+
 axios.get(`http://localhost:3000/Module`)      
               .then((res) => {
                 if (res.status === 200) {
