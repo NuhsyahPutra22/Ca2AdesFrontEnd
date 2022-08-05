@@ -71,9 +71,9 @@ document.getElementById("courselist").innerHTML=tbody
               function deletebtn(courseid){
                 console.log(courseid);
                 axios.delete("http://localhost:3000/Course/"+courseid, {
-                    headers: {
+                  
                       headers: {  "Authorization": "Bearer " + token}
-                    }
+                    
                 })
                 .then(function (response) {
                     if (response.status === 200) {

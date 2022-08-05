@@ -28,7 +28,7 @@ window.location.href="Login.html"
   
   .then((data)=>{
     //value is show in courseid
-      var dropdown=`<select>`;
+      var dropdown=`<select id="courseid">`;
       for (let i = 0; i < data.result.length; i++) {
       dropdown+=`  <option value="${data.result[i].courseid}">${data.result[i].coursecode} ${data.result[i].coursename}</option>`
 
