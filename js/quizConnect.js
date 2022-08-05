@@ -184,6 +184,20 @@ document.getElementById("quizlist").innerHTML=tbody
     var f = document.getElementById("q6-input").value;
     var g = document.getElementById("q7-input").value;
     var userid = document.getElementById("user-input").value;
+    fetch(`http://localhost:3000/Quizbyquizid/${userid}`,
+    {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+
+    })
+    .then((response) => response.json())
+
+    // .then((data) => {
+    //   console.log(data.userid)
+    //   let userid = data[0].userid;
+    //   console.log(userid)
             fetch(`http://localhost:3000/Quiz`, {
                 method: 'POST',
                 headers: {
@@ -194,84 +208,53 @@ document.getElementById("quizlist").innerHTML=tbody
                 .then((response) => {
                     response.json()
                     alert("successfully Added Attempt")
-                    // showAttempt();
-
-                            //  .then((data) => { 
-                  //             const data={
-                      
-                  //               q1: a,
-                  //               q2: b,
-                  //               q3:c,
-                  //               q4:d,
-                  //               q5:e,
-                  //               q6: f,
-                  //               q7: g,
-                  //               userid: userid
-                        
-                  //             }
-                  // var tbody = `<table>`
-                  // for (let i = 0; i < data.result; i++) {
-                  //     console.log(data.result[0].quizid)
-                  //     tbody+=`<th scope="col" class="col-1" >${data.result[i].quizid}</th>`
-                  //     tbody+=`<th scope="col" class="col-1" >${data.result[i].q1}</th>`
-                  //     tbody+=`<th scope="col" class="col-1" >${data.result[i].q2}</th>`
-                  //     tbody+=`<th scope="col" class="col-1" >${data.result[i].q3}</th>`
-                  //     tbody+=`<th scope="col" class="col-1" >${data.result[i].q4}</th>`
-                  //     tbody+=`<th scope="col" class="col-1" >${data.result[i].q5}</th>`
-                  //     tbody+=`<th scope="col" class="col-1" >${data.result[i].q6}</th>`
-                  //     tbody+=`<th scope="col" class="col-1" >${data.result[i].q7}</th>`
-                  //     tbody+=`<th scope="col" class="col-1" >${data.result[i].userid}</th>`
-                  //     tbody+=`<th scope="col" class="col-1" ><button onclick="deleteQuizbtn(${data.result[i].quizid})">DELETE</button></th>`
-                  // }
-                  // tbody += `</table>`
-      
-      
-                  // document.getElementById("quizlist").innerHTML = tbody
+                    showAttempt();
                 }
                 )
-           
-        
-        }
 
-      //   function showAttempt() {
-      //     axios.get(`http://localhost:3000/Quiz`)
-      //         .then((res) => {
-      //             if (res.status === 200) {
-      //                 console.log("Success!");
+        }
+        // )}
+    
+
+        function showAttempt() {
+          axios.get(`http://localhost:3000/Quiz`)
+              .then((res) => {
+                  if (res.status === 200) {
+                      console.log("Success!");
       
-      //                 console.log(res)
+                      console.log(res)
       
-      //                 return res.data
-      //             } else {
-      //                 res.json().then((error) => { throw error });
-      //             }
-      //         })
+                      return res.data
+                  } else {
+                      res.json().then((error) => { throw error });
+                  }
+              })
       
-      //         .then((data) => {
-      //             var tbody = `<table>`
-      //             for (let i = 0; i < data.result.length; i++) {
-      //                 console.log(data.result[0].quizid)
-      //                 tbody+=`<th scope="col" class="col-1" >${data.result[i].quizid}</th>`
-      //                 tbody+=`<th scope="col" class="col-1" >${data.result[i].q1}</th>`
-      //                 tbody+=`<th scope="col" class="col-1" >${data.result[i].q2}</th>`
-      //                 tbody+=`<th scope="col" class="col-1" >${data.result[i].q3}</th>`
-      //                 tbody+=`<th scope="col" class="col-1" >${data.result[i].q4}</th>`
-      //                 tbody+=`<th scope="col" class="col-1" >${data.result[i].q5}</th>`
-      //                 tbody+=`<th scope="col" class="col-1" >${data.result[i].q6}</th>`
-      //                 tbody+=`<th scope="col" class="col-1" >${data.result[i].q7}</th>`
-      //                 tbody+=`<th scope="col" class="col-1" >${data.result[i].userid}</th>`
-      //                 tbody+=`<th scope="col" class="col-1" ><button onclick="deleteQuizbtn(${data.result[i].quizid})">DELETE</button></th>`
-      //             }
-      //             tbody += `</table>`
-      
-      
-      //             document.getElementById("quizlist").innerHTML = tbody
+              .then((data) => {
+                  var tbody = `<table>`
+                  for (let i = 0; i < data.result.length; i++) {
+                      console.log(data.result[0].quizid)
+                      tbody+=`<th scope="col" class="col-1" >${data.result[i].quizid}</th>`
+                      tbody+=`<th scope="col" class="col-1" >${data.result[i].q1}</th>`
+                      tbody+=`<th scope="col" class="col-1" >${data.result[i].q2}</th>`
+                      tbody+=`<th scope="col" class="col-1" >${data.result[i].q3}</th>`
+                      tbody+=`<th scope="col" class="col-1" >${data.result[i].q4}</th>`
+                      tbody+=`<th scope="col" class="col-1" >${data.result[i].q5}</th>`
+                      tbody+=`<th scope="col" class="col-1" >${data.result[i].q6}</th>`
+                      tbody+=`<th scope="col" class="col-1" >${data.result[i].q7}</th>`
+                      tbody+=`<th scope="col" class="col-1" >${data.result[i].userid}</th>`
+                      tbody+=`<th scope="col" class="col-1" ><button onclick="deleteQuizbtn(${data.result[i].quizid})">DELETE</button></th>`
+                  }
+                  tbody += `</table>`
       
       
-      //         })
-      //         .catch((error) => alert(error.message));
+                  document.getElementById("quizlist").innerHTML = tbody
       
-      // }
+      
+              })
+              .catch((error) => alert(error.message));
+      
+      }
 
 //   function deleteAttempt(quizid){
 //     //$("#deleteModelBtn").on("click", function () {

@@ -9,7 +9,7 @@ function submit() {
   var q5 = document.getElementById("q5-input").value;
   var q6 = document.getElementById("q6-input").value;
   var q7 = document.getElementById("q7-input").value;
-  var q7Arr = q7.split(',');
+  // var q7Arr = q7.split(',');
   // var answer = document.getElementById("");
   var result = document.getElementById("result");
   var quiz = document.getElementById("quiz");
@@ -71,56 +71,64 @@ function submit() {
     }
 
     //Question 7
-    for (i=0; i< q7Arr.length; i++) {
-      let x = q7Arr[i];
-    
-    switch (x) {
-      case "HTML":
-        points++;
-        break;
-      case "CSS":
-        points++;
-        break;
-      case "Java":
-        points++;
-        break;
-      case "JavScript":
-        points++;
-        break;
-      case "Python":
-        points++;
-        break;
-      case "C#":
-        points++;
-        break;
-      case "C++":
-        points++;
-        break;
-      case "C":
-        points++;
-        break;
-      case "Swift":
-        points++;
-        break;
-      case "Ruby":
-        points++;
-        break;
-      case "R":
-        points++;
-        break;
-      case "Golang":
-        points++;
-        break;
-      case "PHP":
-        points++;
-        break;
-      case "Objective-C":
-        points++;
-        break;
-      default:
-        points = points;
+    if (q7 > 7) {
+      points += 10;
+    } else if (q7 > 4) {
+      points += 5;
+    } else {
+      points = points;
     }
-  }
+
+  //   for (i=0; i< q7Arr.length; i++) {
+  //     let x = q7Arr[i];
+    
+  //   switch (x) {
+  //     case "HTML":
+  //       points++;
+  //       break;
+  //     case "CSS":
+  //       points++;
+  //       break;
+  //     case "Java":
+  //       points++;
+  //       break;
+  //     case "JavScript":
+  //       points++;
+  //       break;
+  //     case "Python":
+  //       points++;
+  //       break;
+  //     case "C#":
+  //       points++;
+  //       break;
+  //     case "C++":
+  //       points++;
+  //       break;
+  //     case "C":
+  //       points++;
+  //       break;
+  //     case "Swift":
+  //       points++;
+  //       break;
+  //     case "Ruby":
+  //       points++;
+  //       break;
+  //     case "R":
+  //       points++;
+  //       break;
+  //     case "Golang":
+  //       points++;
+  //       break;
+  //     case "PHP":
+  //       points++;
+  //       break;
+  //     case "Objective-C":
+  //       points++;
+  //       break;
+  //     default:
+  //       points = points;
+  //   }
+  // }
 
     quiz.style.display = "none";
     button.style.display = "none";
