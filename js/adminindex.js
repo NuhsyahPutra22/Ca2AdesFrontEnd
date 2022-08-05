@@ -7,7 +7,7 @@ const token=sessionStorage.getItem("token");
 if(userrole!=="Admin"){
 
 alert("Your role is not Admin")
-window.location.href="https://gmstrikerz.github.io/Ca2AdesFrontEnd/view/Login.html"
+window.location.href="Login.html"
 
 
 }

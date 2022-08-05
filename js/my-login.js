@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", function () {
             //success will go to index.html
             console.log("Success!");
             console.log(res)
-            window.location.href = "https://gmstrikerz.github.io/Ca2AdesFrontEnd/view/index.html";
+            window.location.href = "./index.html";
             return res.data
           } else {
             res.json().then((error) => { throw error });

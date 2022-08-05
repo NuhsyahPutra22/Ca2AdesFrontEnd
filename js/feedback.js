@@ -8,7 +8,7 @@ const userrole = sessionStorage.getItem("userrole");
 if (token === null || isNaN(userid)) {
     console.log("Redirecting to login...");
 
-    window.location.href = "https://gmstrikerz.github.io/Ca2AdesFrontEnd/view/Login.html";
+    window.location.href = "Login.html";
 }
 
 window.addEventListener("DOMContentLoaded", function () {
