@@ -5,36 +5,11 @@ const STORAGE_API_HOST = false ? `http://localhost:3000` : `https://adesschoolma
 const InsertButton = document.querySelector('#insert-btn');
 const tableBody = document.querySelector('#courselist');
 
-var b = sessionStorage.getItem("userid")
-var token=sessionStorage.getItem("token")
-
-var admin = sessionStorage.getItem("userrole")
-
-if(admin!=="Admin"||token===null|| isNaN(b)){
-
-    alert("Your role is not Admin")
-    window.location.href="Login.html"
-    } else {
-    // show log out link
-  
-    const html=`
-    <li class="nav-item" >
-    <a class="nav-link" href="Login.html">Log Out</a>
-  </li>
-    `
-    document.getElementById("loginlogout").innerHTML=html
-    document.getElementById("loginlogout").click(function () {
-      window.sessionStorage.clear();
-      window.location.href="../view/Login.html"
-      window.alert("Successfully Log Out");
-  })
-   
-  }
-  
 
 
 
 window.onload = function loadScreen() {
+    loginlogout()
     GetCoursename()
     showModule()
 
@@ -255,6 +230,38 @@ function DeleteModuleInfo(moduleid) {
         })
 
 }
+
+
+
+    function loginlogout(){
+        var b = sessionStorage.getItem("userid")
+        var token=sessionStorage.getItem("token")
+        
+        var admin = sessionStorage.getItem("userrole")
+        
+        if(admin!=="Admin"||token===null|| isNaN(b)){
+        
+            alert("Your role is not Admin")
+            window.location.href="Login.html"
+            } else {
+            // show log out link
+          
+            const html=`
+            <li class="nav-item" >
+            <a class="nav-link" href="Login.html">Log Out</a>
+          </li>
+            `
+            document.getElementById("loginlogout").innerHTML=html
+            document.getElementById("loginlogout").click(function () {
+              window.sessionStorage.clear();
+              window.location.href="../view/Login.html"
+              window.alert("Successfully Log Out");
+          })
+           
+          }
+          
+        
+    }
     
 
 
