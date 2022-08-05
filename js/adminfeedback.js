@@ -66,22 +66,6 @@ window.addEventListener("DOMContentLoaded", function () {
                            `;
                     document.getElementById("getfeedback").innerHTML = postHtml
                 }
-                else {
-                    //view other user feedback
-                    postHtml += `
-                            <div class="card" style="margin-top: 2rem;">
-                            <div class="card-body">
-                 
-                                <p class="card-text">${data.result[i].feedbacktitle}</p>
-                                <p class="card-text">${data.result[i].feedbackcontent}</p>
-                            </div>
-                            <div class="card-footer text-muted">
-                                Date : ${res}
-                            </div>
-                        </div>
-                        `;
-                    document.getElementById("getfeedback").innerHTML = postHtml
-                }
 
             }
 
@@ -135,10 +119,34 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 //delete feedback function
+// function deletebtn(feedbackid) {
+//     // console.log(courseid);
+//     let userid = sessionStorage.getItem("userid")
+//     axios.delete("http://localhost:3000/Feedback/" + userid + "/" + feedbackid, {
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     })
+//         .then(function (response) {
+//             if (response.status === 200) {
+//                 //success will alert success
+//                 alert('Delete successfull!');
+//                 location.reload();
+//             } else {
+//                 alert('Failed to delete!')
+//                 console.log(response);
+//             }
+//         })
+//         .catch((error) => {
+//             console.log(error);
+//         })
+// }
+
+//delete by feedbackid
 function deletebtn(feedbackid) {
-    // console.log(courseid);
     let userid = sessionStorage.getItem("userid")
-    axios.delete("http://localhost:3000/Feedback/" + userid + "/" + feedbackid, {
+    // let feedbackid = sessionStorage.getItem("userid")
+    axios.delete("http://localhost:3000/Feedback/" +feedbackid, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -157,3 +165,4 @@ function deletebtn(feedbackid) {
             console.log(error);
         })
 }
+
