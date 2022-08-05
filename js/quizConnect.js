@@ -12,7 +12,6 @@ var d = document.getElementById("q4-input").value;
 var e = document.getElementById("q5-input").value;
 var f = document.getElementById("q6-input").value;
 var g = document.getElementById("q7-input").value;
-var total_score = document.getElementById("result").value;
 var userid = document.getElementById("user-input").value;
 
 const data={
@@ -23,7 +22,6 @@ const data={
   q5:e,
   q6:f,
   q7:g,
-  total_score:total_score,
   userid:userid
 }
 axios({
@@ -31,7 +29,7 @@ axios({
   url: 'http://localhost:3000/Quiz',
   data: data,
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({q1, q2, q3, q4, q5, q6, q7, total_score, userid}),
+  // body: JSON.stringify({q1, q2, q3, q4, q5, q6, q7, userid}),
 })      
         .then((res) => {
           if (res.status === 201) {
@@ -72,7 +70,6 @@ axios.get(`http://localhost:3000/Quiz`)
   tbody+=`<th scope="col" class="col-1" >${data.result[i].q5}</th>`
   tbody+=`<th scope="col" class="col-1" >${data.result[i].q6}</th>`
   tbody+=`<th scope="col" class="col-1" >${data.result[i].q7}</th>`
-  tbody+=`<th scope="col" class="col-1" >${data.result[i].total_score}</th>`
   tbody+=`<th scope="col" class="col-1" >${data.result[i].userid}</th>`
   tbody+=`<th scope="col" class="col-1" ><button onclick="deleteQuizbtn(${data.result[i].quizid})">DELETE</button></th>`
 }
