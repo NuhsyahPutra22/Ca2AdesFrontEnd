@@ -49,27 +49,8 @@ function gopage(){
        window.location.href="../view/index.html"
     
     }
-
-
-
-
 }    
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
 
 
 //get all user
@@ -112,9 +93,7 @@ document.getElementById("courselist").innerHTML=tbody
 function deleteuser(userid){
 
   axios.delete("http://localhost:3000/user/"+userid, {
-      headers: {
-          'Content-Type': 'application/json'
-      }
+    headers: {  "Authorization": "Bearer " + token}
   })
   .then(function (response) {
       if (response.status === 200) {

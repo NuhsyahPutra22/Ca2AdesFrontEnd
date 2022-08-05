@@ -72,7 +72,7 @@ document.getElementById("courselist").innerHTML=tbody
                 console.log(courseid);
                 axios.delete("http://localhost:3000/Course/"+courseid, {
                     headers: {
-                        'Content-Type': 'application/json'
+                      headers: {  "Authorization": "Bearer " + token}
                     }
                 })
                 .then(function (response) {
@@ -104,7 +104,7 @@ axios({
   method: 'post',
   url: 'http://localhost:3000/Course',
   data: data,
-  headers: { 'Content-Type': 'application/json' }
+  headers: {  "Authorization": "Bearer " + token}
 })      
         .then((res) => {
           if (res.status === 201) {
@@ -184,8 +184,7 @@ function btnedit(){
     method: 'put',
     url: 'http://localhost:3000/Course/'+d,
     data: data,
- 
-    headers: { 'Content-Type': 'application/json' }
+    headers: {  "Authorization": "Bearer " + token}
   })      
           .then((res) => {
             if (res.status === 200) {
