@@ -1,5 +1,5 @@
 const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-const STORAGE_API_HOST = isLocalhost ? `http://localhost:3000` : `https://adesschoolmanagementsystemca2.herokuapp.com/ `;
+const STORAGE_API_HOST = false ? `http://localhost:3000` : `https://adesschoolmanagementsystemca2.herokuapp.com`;
 
 //button form selector
 const InsertButton = document.querySelector('#insert-btn');
@@ -12,7 +12,7 @@ window.onload = function loadScreen() {
 }
 function GetCoursename() {
     let Dropdown = "";
-    fetch(`${STORAGE_API_HOST}/GetCourseName`,
+    fetch(`http://localhost:3000/GetCourseName`,
         {
             method: 'GET',
             headers: {
@@ -39,7 +39,7 @@ function AddModule() {
     const moduledetail = document.getElementById("Amodule-details").value;
     const semestername = document.getElementById("Asemestername").value;
     const coursename = document.getElementById("Acourseid").value;
-    fetch(`${STORAGE_API_HOST}/GetCourseid/${coursename}`,
+    fetch(`http://localhost:3000/GetCourseid/${coursename}`,
         {
             method: 'GET',
             headers: {
@@ -52,7 +52,7 @@ function AddModule() {
             console.log(data.courseid)
             let courseid = data[0].courseid;
             console.log(courseid)
-            fetch(`${STORAGE_API_HOST}/Module`, {
+            fetch(`http://localhost:3000/Module`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ function ClearModulefromtable() {
 
 
 function showModule() {
-    axios.get(`${STORAGE_API_HOST}/Module`)
+    axios.get(`http://localhost:3000/Module`)
         .then((res) => {
             if (res.status === 200) {
                 console.log("Success!");
@@ -206,7 +206,7 @@ function Updatemodulebtn(moduleid){
 //DeleteModuleInfo
 function DeleteModuleInfo(moduleid) {
     console.log(moduleid);
-    fetch(`${STORAGE_API_HOST}/Module/${moduleid}`,
+    fetch(`http://localhost:3000/Module/${moduleid}`,
         {
             method: 'DELETE',
             headers: {
