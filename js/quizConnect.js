@@ -29,50 +29,9 @@ if (token === null || isNaN(b)) {
 })
  
 }
-// connect
-// function createAttempt(){
 
-// var a = document.getElementById("q1-input").value;
-// var b = document.getElementById("q2-input").value;
-// var c = document.getElementById("q3-input").value;
-// var d = document.getElementById("q4-input").value;
-// var e = document.getElementById("q5-input").value;
-// var f = document.getElementById("q6-input").value;
-// var g = document.getElementById("q7-input").value;
-// var userid = JSON.stringify(document.getElementById("user-input").value);
 
-// const data={
-//   q1:a,
-//   q2:b,
-//   q3:c,
-//   q4:d,
-//   q5:e,
-//   q6:f,
-//   q7:g,
-//   userid:userid
-// }
-// axios({
-//   method: 'post',
-//   url: 'http://localhost:3000/Quiz',
-//   data: data,
-//   headers: { 'Content-Type': 'application/json' },
-//   body: JSON.stringify({q1, q2, q3, q4, q5, q6, q7, userid}),
-// })      
-//         .then((res) => {
-//           if (res.status === 201) {
-//               console.log("Success!");
-//               alert("success");
-//               location.reload();
-              
-//           } else {
-//           alert("error");
-//           }
-//         })
-
-       
-//         .catch((error) => alert(error.message))
-// }
-
+// get all result
 axios.get(`http://localhost:3000/Quiz`)      
               .then((res) => {
                 if (res.status === 200) {
@@ -129,120 +88,50 @@ document.getElementById("quizlist").innerHTML=tbody
                     })
             }
 
-//new
-// window.onload = function loadScreen() {
-//     getAttempts();
-//     deleteAttempt();
-// };
+// create quiz
+function createAttempt(){
 
-// function getAttempts() {
-//     // Get data from server
-//     let html = ``;
-//     fetch(`http://localhost:3000/Quiz`)
-//         .then((response) => response.json())
-//         .then((data) => {
-//           for (let i = 0; i < data.length; i++) {
-//             const quiz = data[i];
-//             // const row = `<tr>hello ${i}</tr>`
-//             html += `
-//               <tr>
-//                 <th scope="row">${quiz["quizid"]}</th>
-//                <td>${quiz["q1"]}</td>
-//                <td>${quiz["q2"]}</td>
-//                <td>${quiz["q3"]}</td>
-//                <td>${quiz["q4"]}</td>
-//                <td>${quiz["q5"]}</td>
-//                <td>${quiz["q6"]}</td>
-//                <td>${quiz["q7"]}</td>
-//                <td>${quiz["total_score"]}</td>
-//                <td>${quiz["userid"]}</td>
-//                  <td>$quiz["credit_unit"]}</td>
-//                  <td><button data-toggle="modal" data-target="#deleteModalCenter" onclick="deleteQuizbtn('${data.quizid
-//           }')">Delete</button></td>
-//              </tr>
-//            `;
-//           }
-//           const tableBody = document.getElementById("quizlist");  
-//           tableBody.innerHTML = html;
-//         })
-//         .catch((error) => alert(error.message))
-//   }
-
-  // function createAttempt() {
-  //   var a = document.getElementById("q1-input").value;
-  //   var b = document.getElementById("q2-input").value;
-  //   var c = document.getElementById("q3-input").value;
-  //   var d = document.getElementById("q4-input").value;
-  //   var e = document.getElementById("q5-input").value;
-  //   var f = document.getElementById("q6-input").value;
-  //   var g = document.getElementById("q7-input").value;
-  //   var userid = document.getElementById("user-input").value;
-  //   if (validate(a,b,c,d,e,f,g,total_score,userid)) {
-  //    // let modules={currentModuleName,currentcreditUnit}
-  //     fetch(`http://localhost:3000/Quiz`,
-  //      {
-  //       method: 'POST',
-  //       headers: {
-  //           'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({a,b,c,d,e,f,g,total_score,userid}),
-  //   })
-  //       .then((response) => {
-  //         if (response.status === 201) {
-  //           // Ok
-  //           getAttempt();
-  //           return `success`;
-  //         } else {
-  //           response.json().then((error) => { throw error });
-  //         }
-  //       })
-  //       .catch((error) => alert(error.message))
-  //   } else {
-  //     return error;
-  //   }
-  // }
-
-  function createAttempt() {
-    var a = document.getElementById("q1-input").value;
-    var b = document.getElementById("q2-input").value;
-    var c = document.getElementById("q3-input").value;
-    var d = document.getElementById("q4-input").value;
-    var e = document.getElementById("q5-input").value;
-    var f = document.getElementById("q6-input").value;
-    var g = document.getElementById("q7-input").value;
-    var userid = document.getElementById("user-input").value;
-    fetch(`http://localhost:3000/Quizbyquizid/${userid}`,
-    {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-
-    })
-    .then((response) => response.json())
-
-    // .then((data) => {
-    //   console.log(data.userid)
-    //   let userid = data[0].userid;
-    //   console.log(userid)
-            fetch(`http://localhost:3000/Quiz`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ a,b,c,d,e,f,g,userid }),
+var a = document.getElementById("q1-input").value;
+var b = document.getElementById("q2-input").value;
+var c = document.getElementById("q3-input").value;
+var d = document.getElementById("q4-input").value;
+var e = document.getElementById("q5-input").value;
+var f = document.getElementById("q6-input").value;
+var g = document.getElementById("q7-input").value;
+var userid = document.getElementById("user-input").value;
+    const data={
+        q1:a,
+        q2:b,
+        q3:c,
+        q4:d,
+        q5:e,
+        q6:f,
+        q7:g,
+        userid:userid
+    }
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/Quiz',
+      data: data,
+    //   headers: {  "Authorization": "Bearer " + token}
+    })      
+            .then((res) => {
+              if (res.status === 201) {
+                  console.log("Success!");
+                  alert("success");
+                  location.reload();
+                  
+              } else {
+              alert("error");
+              }
             })
-                .then((response) => {
-                    response.json()
-                    alert("successfully Added Attempt")
-                    showAttempt();
-                }
-                )
-
-        }
-        // )}
     
+           
+            .catch((error) => alert(error.message))
+    }
 
+
+        // show results
         function showAttempt() {
           axios.get(`http://localhost:3000/Quiz`)
               .then((res) => {
@@ -282,25 +171,3 @@ document.getElementById("quizlist").innerHTML=tbody
               .catch((error) => alert(error.message));
       
       }
-
-//   function deleteAttempt(quizid){
-//     //$("#deleteModelBtn").on("click", function () {
-//      // const records_id = document.getElementById("recordid").value;
-//       console.log(quizid);
-//       fetch(`http://localhost:3000/Quiz/${quizid}`,
-//       {
-//        method: 'DELETE',
-//        headers: {
-//            'Content-Type': 'application/json',
-//        },
-//    })
-//    .then((response) => {
-//     if (response.status === 200) {
-//       // Ok
-//       getAttempts()
-//     //   .then((data) =>console.log(data)) 
-//        .catch((error) => alert(error.message))
-//       getAttempts();
-//   // });
-//   }})
-//   }
